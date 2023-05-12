@@ -1,0 +1,20 @@
+.foot {
+    display: flex;
+    justify-content: space-around;
+    align-content: flex-start;
+}
+
+.contenido {
+    width: 100%;
+    height: auto;
+    background-color: rgb(13, 13, 13, 0.9);
+    color: white;
+
+}
+
+#logos {
+    height: 70px;
+}
+.creditos{
+    text-align: center;
+}

@@ -1,0 +1,21 @@
+<nav class="navbar">
+  <div class="logo">
+    <span class="logo-spacer"></span>
+    <img src="../../assets/logo.png" alt="Logo de la empresa">
+  </div>
+  <div>
+    <p>Hotel Un Verano Sin Ti</p>
+  </div>
+  <div>Un Verano Sin Ti: Tu escapada inolvidable al paraíso</div>
+
+  <div class="navbar-container">
+    <ul class="nav-items">
+      <li class="nav-item" routerLinkActive="active"><a [ngClass]="{'seleccionado': valor === 'inicio'}" class="nav-link" [routerLink]="['inicio']">Inicio</a></li>
+      <li class="nav-item" routerLinkActive="active"><a [ngClass]="{'seleccionado': valor === 'habitaciones'}" class="nav-link" [routerLink]="['habitaciones']">Habitaciones</a></li>
+          <li class="nav-item" routerLinkActive="active"><a [ngClass]="{'seleccionado': valor === 'galeria'}" class="nav-link" [routerLink]="['galeria']">Galeria</a></li>
+      <li class="nav-item" routerLinkActive="active"><a [ngClass]="{'seleccionado': valor === 'servicios'}" class="nav-link" [routerLink]="['servicios']">Servicios</a></li>
+      <li class="nav-item" routerLinkActive="active"><a [ngClass]="{'seleccionado': valor === 'nosotros'}" class="nav-link" [routerLink]="['nosotros']"> Nosotros</a></li>
+      <li class="nav-item" routerLinkActive="active"><a [ngClass]="{'seleccionado': valor === 'contacto'}" class="nav-link" [routerLink]="['contacto']"> Contacto</a></li>
+    </ul>
+  </div>
+</nav>
