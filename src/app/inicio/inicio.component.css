@@ -1,0 +1,56 @@
+.encabezado {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: flex-end;
+}
+
+.fotos {
+    background-color: rgb(0, 0, 0, 0.6);
+    width: 60%;
+    margin-left: 20%;
+}
+
+img {
+    max-width: 100%;
+    margin-bottom: 0.5em;
+    display: block;
+    outline: 2px solid #fff;
+    outline-offset: -10px;
+}
+
+.galeria img:hover {
+    transform: scale(1.1);
+    outline: 3px solid #BF0404;
+}
+
+.galeria {
+    text-align: center;
+    margin: 1em;
+    column-gap: 2em;
+    columns: 3 320px;
+}
+
+button{
+    width: 80%;
+}
+
+
+.desc{
+    max-width: 40%;
+    background-color: aqua;
+    text-align: justify;
+}
+
+#data{
+    background-color: #BF0404;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
