@@ -10,4 +10,13 @@ export class InicioComponent {
   constructor(private pagina: PaginaService) {
     pagina.setValor('inicio');
   }
+  vermas:boolean = false;
+
+  ver(){
+    this.vermas=true;
+  }
+
+  nover(){
+    this.vermas=false;
+  }
 }

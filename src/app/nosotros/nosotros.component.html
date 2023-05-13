@@ -1,5 +1,87 @@
+<br><br><br><br>
+<div class="content">
+  <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile [colspan]=3 [rowspan]=1>
+      <div class="about">
+        <h2>Acerca de nosotros</h2>
+        <p>Somos un hotel dedicado a brindar la mejor experiencia a nuestros huéspedes. Contamos con instalaciones de
+          alta
+          calidad y un equipo de profesionales comprometidos con su satisfacción.</p>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=2>
+      <mat-progress-spinner class='example-margin' [color]='color' [mode]='mode' [value]='value'></mat-progress-spinner>
+      <p>4.5</p>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=3 [rowspan]=row>
+      <div class="opiniones">
+        <div *ngIf="com; else vercom">
+          <button (click)="ver()" class="btn btn-outline-warning">Ver opiniones</button>
+        </div>
+        <ng-template #vercom>
+          <mat-form-field>
+            <mat-label>Buscador</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Escribe cualquier" #input>
+          </mat-form-field>
+
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Nombre </th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <!-- Edad Column -->
+            <ng-container matColumnDef="position">
+              <th mat-header-cell *matHeaderCellDef> Edad </th>
+              <td mat-cell *matCellDef="let element"> {{element.edad}} </td>
+            </ng-container>
+
+
+            <!-- Opinion Column -->
+            <ng-container matColumnDef="weight">
+              <th mat-header-cell *matHeaderCellDef> Opinión </th>
+              <td mat-cell *matCellDef="let element"> "{{element.opinion}}"" </td>
+            </ng-container>
+
+            <!-- Calificacion Column -->
+            <ng-container matColumnDef="symbol">
+              <th mat-header-cell *matHeaderCellDef> Calificación </th>
+              <td mat-cell *matCellDef="let element"> {{element.calificacion}} / 5 </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <!-- Row shown when there is no matching data. -->
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+            </tr>
+          </table>
+          <br>
+          <button (click)="nover()" class="btn btn-outline-warning">Ver menos</button>
+        </ng-template>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+<br><br>
 <div class="nosotros">
-    <h2>Acerca de nosotros</h2>
-    <p>Somos un hotel dedicado a brindar la mejor experiencia a nuestros huéspedes. Contamos con instalaciones de alta calidad y un equipo de profesionales comprometidos con su satisfacción.</p>
-  </div>
-  
+  <mat-grid-list cols="2" rowHeight="170px">
+    <mat-grid-tile *ngFor="let i of integrante; let index = index">
+      <mat-card class="example-card" [id]="'card-'+index">
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title>{{ i.name }}</mat-card-title>
+            <mat-card-subtitle>{{ i.id }}</mat-card-subtitle>
+            <img mat-card-sm-image [src]="i.foto" alt="Image">
+          </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content>
+          {{ i.desc }}
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

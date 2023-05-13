@@ -14,7 +14,7 @@
 </div>
 <br>
 <section id="data">
-  <div>a</div>
+  <div></div>
   <div class="desc">
     <h1>BIENVENIDO AL HOTEL UN VERANO SIN TI</h1>
     <p>
@@ -35,52 +35,70 @@
       seguir
       tu rutina de ejercicios y cuidar tu bienestar físico.
     </p>
-    <p>
-      Sabemos lo importante que es estar conectado en la era digital, por eso ofrecemos acceso gratuito a internet de
-      alta
-      velocidad en todas nuestras instalaciones. Ya sea para trabajar, compartir tus experiencias o simplemente
-      mantenerte
-      al día con tus seres queridos, estarás siempre conectado.
-    </p>
-    <p>
-      En "Un Verano Sin Ti", nos enorgullece brindar una amplia gama de servicios adicionales para hacer de tu estancia
-      una experiencia completa y satisfactoria. Nuestro equipo amable y dedicado está listo para ayudarte con cualquier
-      solicitud, desde servicios de habitación impecables hasta consejos locales para explorar la belleza de nuestro
-      entorno.
-    </p>
-    <p>
-      En cuanto a la gastronomía, te invitamos a deleitar tu paladar en nuestros restaurantes temáticos, donde chefs
-      talentosos crean platos exquisitos con ingredientes frescos y locales. Cada bocado es una explosión de sabores y
-      una
-      invitación a explorar la diversidad culinaria.
-    </p>
-    <p>
-      En "Un Verano Sin Ti", nuestra misión es superar tus expectativas y brindarte una experiencia hotelera
-      inolvidable.
-      Nos esforzamos por crear un ambiente acogedor y sofisticado donde cada detalle está cuidadosamente diseñado para
-      ofrecerte el máximo confort y disfrute.
-    </p>
-    <p>
-      Bienvenido a "Un Verano Sin Ti", donde la elegancia se fusiona con la hospitalidad y los sueños se convierten en
-      recuerdos duraderos. Estamos aquí para hacer que tus vacaciones sean verdaderamente especiales y transformar tu
-      estancia en una experiencia que desearás revivir una y otra vez.
-    </p>
+    <div *ngIf="vermas; else botonver">
+      <p>
+        Sabemos lo importante que es estar conectado en la era digital, por eso ofrecemos acceso gratuito a internet de
+        alta
+        velocidad en todas nuestras instalaciones. Ya sea para trabajar, compartir tus experiencias o simplemente
+        mantenerte
+        al día con tus seres queridos, estarás siempre conectado.
+      </p>
+      <p>
+        En "Un Verano Sin Ti", nos enorgullece brindar una amplia gama de servicios adicionales para hacer de tu
+        estancia
+        una experiencia completa y satisfactoria. Nuestro equipo amable y dedicado está listo para ayudarte con
+        cualquier
+        solicitud, desde servicios de habitación impecables hasta consejos locales para explorar la belleza de nuestro
+        entorno.
+      </p>
+      <p>
+        En cuanto a la gastronomía, te invitamos a deleitar tu paladar en nuestros restaurantes temáticos, donde chefs
+        talentosos crean platos exquisitos con ingredientes frescos y locales. Cada bocado es una explosión de sabores y
+        una
+        invitación a explorar la diversidad culinaria.
+      </p>
+      <p>
+        En "Un Verano Sin Ti", nuestra misión es superar tus expectativas y brindarte una experiencia hotelera
+        inolvidable.
+        Nos esforzamos por crear un ambiente acogedor y sofisticado donde cada detalle está cuidadosamente diseñado para
+        ofrecerte el máximo confort y disfrute.
+      </p>
+      <p>
+        Bienvenido a "Un Verano Sin Ti", donde la elegancia se fusiona con la hospitalidad y los sueños se convierten en
+        recuerdos duraderos. Estamos aquí para hacer que tus vacaciones sean verdaderamente especiales y transformar tu
+        estancia en una experiencia que desearás revivir una y otra vez.
+      </p>
+      <button (click)="nover()" class="btn btn-outline-warning">Ver menos</button>
+    </div>
+
+    <ng-template #botonver>
+      <p id="gradiente">
+        Sabemos lo importante que es estar conectado en la era digital, por eso ofrecemos acceso gratuito a internet de
+        alta
+        velocidad en todas nuestras instalaciones. Ya sea para trabajar, compartir tus experiencias o simplemente
+        mantenerte
+        al día con tus seres queridos, estarás siempre conectado.
+      </p>
+      <button (click)="ver()" class="btn btn-outline-warning">Ver más</button>
+    </ng-template>
   </div>
-  <div>a</div>
 </section>
-<br>
-<div class="fotos">
-  <h1>Mira algunas fotos de nuestro hotel:</h1>
-  <div>
-    <div class="galeria">
-      <img src="../../assets/galeria/5.png" />
-      <img src="../../assets/galeria/1.png" />
-      <img src="../../assets/galeria/2.png" />
-      <img src="../../assets/galeria/14.png" />
-      <br><br>
-      <button [routerLink]="['../galeria']" class="btn btn-outline-warning">Ver más</button>
-      <img src="../../assets/galeria/3.png" />
-      <img src="../../assets/galeria/6.png" />
+<br><br>
+<section id="imgpreview">
+  <div class="fotos">
+    <h1>Mira algunas fotos de nuestro hotel:</h1>
+    <div>
+      <div class="galeria">
+        <img src="../../assets/galeria/5.png" />
+        <img src="../../assets/galeria/1.png" />
+        <img src="../../assets/galeria/2.png" />
+        <img src="../../assets/galeria/14.png" />
+        <br><br>
+        <button [routerLink]="['../galeria']" class="btn btn-outline-warning">Ver más</button>
+        <img src="../../assets/galeria/3.png" style="margin-top: 50px;"/>
+        <img src="../../assets/galeria/6.png" />
+      </div>
     </div>
   </div>
-</div>
+  <div></div>
+</section>

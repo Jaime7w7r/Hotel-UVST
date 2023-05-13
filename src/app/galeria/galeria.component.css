@@ -1,9 +1,9 @@
-.body{
+.body {
   background-color: rgb(10, 10, 10, 0.6);
   margin: 1em;
 }
 
-img{
+img {
   max-width: 100%;
   margin-bottom: 0.5em;
   display: block;
@@ -11,15 +11,16 @@ img{
   outline-offset: -10px;
 }
 
-img:hover{
+img:hover {
   transform: scale(1.1);
-  outline: 3px solid #BF0404;
+  outline: 3px solid #F257C9;
 }
 
-.galeria{
+.galeria {
   margin: 1em;
   column-gap: 0.5em;
   columns: 5 320px;
+  overflow: hidden;
 }
 
 @font-face {
@@ -30,8 +31,42 @@ img:hover{
   src: url('../../assets/fuentes/neILzCirqoswsqX9zoKmMw.woff2');
 }
 
-p{
+p {
   font-family: 'Lobster';
   color: white;
   font-size: 3em;
+}
+
+.Habitaciones {
+  margin: 1em;
+  column-gap: 0.5em;
+  columns: 4 320px;
+  overflow: hidden;
+}
+
+.Gimnasio {
+  margin: 1em;
+  column-gap: 0.5em;
+  columns: 2 320px;
+  overflow: hidden;
+  width: 50%;
+  margin-left: 25%;
+}
+
+.Comedor {
+  margin: 1em;
+  column-gap: 0.5em;
+  columns: 3 320px;
+  width: 60%;
+  margin-left: 20%;
+  overflow: hidden;
+}
+
+.Piscina {
+  margin: 1em;
+  column-gap: 0.5em;
+  columns: 2 320px;
+  width: 40%;
+  margin-left: 30%;
+  overflow: hidden;
 }
