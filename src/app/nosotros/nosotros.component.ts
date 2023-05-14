@@ -156,7 +156,7 @@ export class NosotrosComponent {
       name: 'Jaime Adolfo Varela Martínez',
       id: 'ID : 295482',
       foto: '../../assets/perfil/JAVM.jpg',
-      desc: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.'
+      desc: ''
     },
   ];
 

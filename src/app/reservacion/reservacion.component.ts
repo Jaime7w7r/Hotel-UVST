@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { PaginaService } from '../pagina.service';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import Swal from 'sweetalert2';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -27,12 +28,21 @@ export class ReservacionComponent {
   guardarReservacion(event: Event) {
     event.preventDefault();
 
+    if (!this.nombre || !this.apellido || !this.telefono || !this.correo || !this.hab || !this.fecha || !this.hora) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Datos incompletos',
+        text: 'Por favor, complete todos los campos requeridos'
+      })
+      return;
+    }
+
     const reservacion = {
       nombre: this.nombre,
       apellido: this.apellido,
       telefono: this.telefono,
       correo: this.correo,
-      habitacion: this.selected,
+      habitacion: this.hab,
       fecha: this.fecha,
       hora: this.hora,
     };
@@ -58,6 +68,11 @@ export class ReservacionComponent {
 
     // Mostrar mensaje de éxito o realizar otras acciones necesarias
     console.log('Reservación guardada exitosamente:', reservacion);
+    Swal.fire({
+      icon: 'success',
+      title: 'Éxito',
+      text: 'Reservación guardada exitosamente',
+    })
   }
 
   disableSelect = new FormControl(false);
@@ -73,7 +88,7 @@ export class ReservacionComponent {
     pagina.setValor('servicios');
   }
 
-  selected = 'option2';
+  hab = '';
 
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
