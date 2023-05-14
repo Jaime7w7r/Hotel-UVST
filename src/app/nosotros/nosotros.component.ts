@@ -89,6 +89,12 @@ const OPINIONES: OPINION[] = [
   }
 ];
 
+const suma = OPINIONES.reduce((total, opinion) => total + opinion.calificacion, 0);
+const num = OPINIONES.length;
+
+
+export{OPINIONES}
+
 
 @Component({
   selector: 'app-nosotros',
@@ -104,8 +110,8 @@ export class NosotrosComponent {
   }
 
   com: boolean = true;
-
   row: number = 1;
+  promedio: number = parseFloat((suma / num).toFixed(1));
 
   ver() {
     this.com = false;
@@ -114,7 +120,7 @@ export class NosotrosComponent {
 
   nover() {
     this.com = true;
-    this.row= 1;
+    this.row = 1;
   }
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];

@@ -12,8 +12,8 @@
     <mat-grid-tile [colspan]=1 [rowspan]=2>
       <div class="promedio">
         <mat-progress-spinner class='example-margin' [color]='color' [mode]='mode'
-          [value]='value'></mat-progress-spinner><span>4.5 / 5</span>
-        <p>¡Tenemos una calificación promedio de 4.5, gracias :)!</p>
+          [value]='value'></mat-progress-spinner><span>{{promedio}} / 5</span>
+        <p>¡Tenemos una calificación promedio de {{promedio}}, gracias :)!</p>
       </div>
     </mat-grid-tile>
     <mat-grid-tile [colspan]=3 [rowspan]=row>

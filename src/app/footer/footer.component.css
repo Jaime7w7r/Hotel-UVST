@@ -1,20 +1,20 @@
 .foot {
-    display: flex;
-    justify-content: space-around;
-    align-content: flex-start;
-}
-
-.contenido {
     width: 100%;
-    height: auto;
-    background-color: rgb(13, 13, 13, 0.9);
+    background-color: rgb(0, 0, 0, 0.7);
     color: white;
-
-}
-
-#logos {
-    height: 70px;
-}
-.creditos{
     text-align: center;
+}
+
+table {
+    width: 100%;
+    text-align: center;
+    background-image: url('../../assets/icon.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+a{
+    margin-left: 10px;
+    color: white;
+    font-size: 20px;
 }
