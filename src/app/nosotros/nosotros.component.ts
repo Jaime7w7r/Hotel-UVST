@@ -132,24 +132,24 @@ export class NosotrosComponent {
       name: 'Leonardo Javier Hernandez Martinez',
       id: 'ID : 245439',
       foto: '../../assets/perfil/LJHM.jpg',
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+      desc: 'Un brindis por todos.'
     },
     {
       name: 'Alfredo Quezada Márquez',
       id: 'ID : 274258',
       foto: '../../assets/perfil/AQM.jpg',
-      desc: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+      desc: 'El pollo es lo maximo. :v'
     },
     {
       name: 'Bárbara Jimena Silva Jaime',
       id: 'ID : 244923',
-      foto: '../../assets/perfil/LJHM.jpg',
-      desc: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.'
+      foto: '../../assets/perfil/BJSJ.jpg',
+      desc: 'Me encanta el poder recorrer el mundo, conociendo nuevas personas y culturas.'
     },
     {
       name: 'Jaime Adolfo Varela Martínez',
       id: 'ID : 295482',
-      foto: '../../assets/perfil/LJHM.jpg',
+      foto: '../../assets/perfil/JAVM.jpg',
       desc: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.'
     },
   ];

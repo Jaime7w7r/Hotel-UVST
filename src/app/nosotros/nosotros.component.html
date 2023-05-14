@@ -5,13 +5,16 @@
       <div class="about">
         <h2>Acerca de nosotros</h2>
         <p>Somos un hotel dedicado a brindar la mejor experiencia a nuestros huéspedes. Contamos con instalaciones de
-          alta
-          calidad y un equipo de profesionales comprometidos con su satisfacción.</p>
+          alta calidad y un equipo de profesionales comprometidos con su satisfacción. En este hotel nos consideramos
+          familia por lo que sentirar una calida estadia.</p>
       </div>
     </mat-grid-tile>
     <mat-grid-tile [colspan]=1 [rowspan]=2>
-      <mat-progress-spinner class='example-margin' [color]='color' [mode]='mode' [value]='value'></mat-progress-spinner>
-      <p>4.5</p>
+      <div class="promedio">
+        <mat-progress-spinner class='example-margin' [color]='color' [mode]='mode'
+          [value]='value'></mat-progress-spinner><span>4.5 / 5</span>
+        <p>¡Tenemos una calificación promedio de 4.5, gracias :)!</p>
+      </div>
     </mat-grid-tile>
     <mat-grid-tile [colspan]=3 [rowspan]=row>
       <div class="opiniones">
@@ -21,7 +24,7 @@
         <ng-template #vercom>
           <mat-form-field>
             <mat-label>Buscador</mat-label>
-            <input matInput (keyup)="applyFilter($event)" placeholder="Escribe cualquier" #input>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Palabra Clave" #input>
           </mat-form-field>
 
           <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -56,7 +59,7 @@
 
             <!-- Row shown when there is no matching data. -->
             <tr class="mat-row" *matNoDataRow>
-              <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+              <td class="mat-cell" colspan="4">No hay opinión que coincida con "{{input.value}}"</td>
             </tr>
           </table>
           <br>
@@ -68,6 +71,8 @@
 </div>
 <br><br>
 <div class="nosotros">
+  <h2>Este sitio web fue hecho como proyecto universitario , fue realizado por los estudiantes de 6to semestre de ISC:</h2>
+  
   <mat-grid-list cols="2" rowHeight="170px">
     <mat-grid-tile *ngFor="let i of integrante; let index = index">
       <mat-card class="example-card" [id]="'card-'+index">
@@ -84,4 +89,6 @@
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>
+  <h4>Para la materia de Tecnologías Web en la Universidad Autónoma de Aguascalientes</h4>
+  <h5>Lamentamos cualquier incoveniente que la paágina pueda ocasionar</h5>
 </div>
