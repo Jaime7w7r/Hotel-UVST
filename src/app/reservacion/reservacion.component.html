@@ -1,3 +1,4 @@
+<br><br><br>
 <div class="reservacion">
   <h2>Reservación de Habitaciones</h2>
   <form (submit)="guardarReservacion($event)">
@@ -16,7 +17,7 @@
           <label for="apellido">Apellido:</label>
           <mat-form-field class="example-full-width">
             <mat-label>Apellido</mat-label>
-            <input matInput id="apellido">
+            <input matInput [(ngModel)]="apellido" name="apellido" id="apellido">
           </mat-form-field>
         </div>
       </mat-grid-tile>
@@ -26,7 +27,7 @@
           <mat-form-field class="example-full-width">
             <mat-label>Teléfono</mat-label>
             <span matPrefix>+52 &nbsp;</span>
-            <input type="tel" matInput placeholder="555-555-1234" id="telefono">
+            <input type="tel" matInput [(ngModel)]="telefono" name="telefono" placeholder="555-555-1234" id="telefono">
             <mat-icon matSuffix>mode_edit</mat-icon>
           </mat-form-field>
         </div>
@@ -36,7 +37,7 @@
           <label for="correo">Correo:</label>
           <mat-form-field class="example-full-width">
             <mat-label>Email</mat-label>
-            <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+            <input type="email" matInput [(ngModel)]="correo" name="correo" [formControl]="emailFormControl" [errorStateMatcher]="matcher"
               placeholder="pat@example.com" id="correo">
             <mat-hint>Ingresa el correo</mat-hint>
             <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
@@ -70,7 +71,7 @@
           <label for="fecha">Fecha de entrada:</label>
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Elige Fecha</mat-label>
-            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" id="fecha">
+            <input matInput [(ngModel)]="fecha" name="fecha" [min]="minDate" [max]="maxDate" [matDatepicker]="picker" id="fecha">
             <mat-hint>MM/DD/AAAA</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
@@ -83,7 +84,7 @@
           <label for="hora">Hora de entrada:</label>
           <mat-form-field appearance="fill">
             <mat-label>Elige</mat-label>
-            <mat-select [disabled]="disableSelect.value" id="hora">
+            <mat-select [disabled]="disableSelect.value" [(value)]="hora" id="hora">
               <mat-option value="option1">Option 1</mat-option>
               <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
               <mat-option value="option3">Option 3</mat-option>
