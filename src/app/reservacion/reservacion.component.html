@@ -66,10 +66,13 @@
           </mat-form-field>
         </div>
       </mat-grid-tile>
-      <mat-grid-tile [colspan]="1" [rowspan]="3">
-        <div class="label-input-container">
-          <label for="fecha">Fecha de entrada:</label>
-          <app-Calendario #fechaInput required></app-Calendario>
+      <mat-grid-tile [colspan]="2" [rowspan]="3" class="calendar align-top">
+        <div>
+          <div class="label-input-container">
+            <label for="fecha">Fecha de entrada:</label>
+            <app-Calendario #fechaInput required></app-Calendario>
+          </div>
+          <div class="spacer"></div>
         </div>
       </mat-grid-tile>
       <br>
