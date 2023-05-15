@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { PaginaService } from '../pagina.service';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import Swal from 'sweetalert2';
+
+import { CalendarioComponent } from '../Calendario/Calendario.component';
+import { Calendar } from 'primeng/calendar';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -17,18 +20,21 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./reservacion.component.css']
 })
 export class ReservacionComponent {
+  @ViewChild('fechaInput')
+  fechaInput!: CalendarioComponent;
+  rangeDates: Date[];
+
   nombre: string = '';
   apellido: string = '';
   telefono: string = '';
   correo: string = '';
   habitacion: string = '';
   fecha: string = '';
-  hora: string = '';
 
   guardarReservacion(event: Event) {
     event.preventDefault();
 
-    if (!this.nombre || !this.apellido || !this.telefono || !this.correo || !this.hab || !this.fecha || !this.hora) {
+    if (!this.nombre || !this.apellido || !this.telefono || !this.correo || !this.hab) {
       Swal.fire({
         icon: 'error',
         title: 'Datos incompletos',
@@ -37,14 +43,15 @@ export class ReservacionComponent {
       return;
     }
 
+    const fechaSeleccionada = this.fechaInput.rangeDates;
+
     const reservacion = {
       nombre: this.nombre,
       apellido: this.apellido,
       telefono: this.telefono,
       correo: this.correo,
       habitacion: this.hab,
-      fecha: this.fecha,
-      hora: this.hora,
+      fecha: fechaSeleccionada
     };
 
     // Obtener el array actual de reservaciones del Local Storage
@@ -63,11 +70,10 @@ export class ReservacionComponent {
     this.telefono = '';
     this.correo = '';
     this.habitacion = '';
-    this.fecha = '';
-    this.hora = '';
 
     // Mostrar mensaje de éxito o realizar otras acciones necesarias
     console.log('Reservación guardada exitosamente:', reservacion);
+    console.log(fechaSeleccionada);
     Swal.fire({
       icon: 'success',
       title: 'Éxito',
@@ -76,16 +82,20 @@ export class ReservacionComponent {
   }
 
   disableSelect = new FormControl(false);
-  minDate: Date;
-  maxDate: Date;
 
   constructor(private pagina: PaginaService) {
-    // Set the minimum to January 1st 20 years in the past and December 31st a year in the future.
-    const currentYear = new Date().getFullYear();
-    this.minDate = new Date(currentYear - 20, 0, 1);
-    this.maxDate = new Date(currentYear + 1, 11, 31);
+
+    this.rangeDates = [];
 
     pagina.setValor('servicios');
+  }
+
+  onSubmit(formulario: NgForm) {
+    const fechaSeleccionada = this.fechaInput.rangeDates;
+    console.log(formulario.value);
+    console.log(fechaSeleccionada);
+    console.log(formulario.value);
+    // Resto del código para procesar los datos del formulario
   }
 
   hab = '';

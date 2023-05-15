@@ -13,9 +13,10 @@ import { GaleriaComponent } from './galeria/galeria.component';
 import { HabitacionesComponent } from './habitaciones/habitaciones.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
+import { CalendarioComponent } from './Calendario/Calendario.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     NavbarComponent,
     ReservacionComponent,
@@ -24,8 +25,9 @@ import { MaterialModule } from './material.module';
     InicioComponent,
     FooterComponent,
     GaleriaComponent,
-    HabitacionesComponent
-  ],
+    HabitacionesComponent,
+      CalendarioComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,

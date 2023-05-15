@@ -27,7 +27,8 @@
           <mat-form-field class="example-full-width">
             <mat-label>Teléfono</mat-label>
             <span matPrefix>+52 &nbsp;</span>
-            <input type="tel" matInput [(ngModel)]="telefono" name="telefono" placeholder="555-555-1234" id="telefono" required>
+            <input type="tel" matInput [(ngModel)]="telefono" name="telefono" placeholder="555-555-1234" id="telefono"
+              required>
             <mat-icon matSuffix>mode_edit</mat-icon>
           </mat-form-field>
         </div>
@@ -37,8 +38,8 @@
           <label for="correo">Correo:</label>
           <mat-form-field class="example-full-width">
             <mat-label>Email</mat-label>
-            <input type="email" matInput [(ngModel)]="correo" name="correo" [formControl]="emailFormControl" [errorStateMatcher]="matcher"
-              placeholder="pat@example.com" id="correo">
+            <input type="email" matInput [(ngModel)]="correo" name="correo" [formControl]="emailFormControl"
+              [errorStateMatcher]="matcher" placeholder="pat@example.com" id="correo">
             <mat-hint>Ingresa el correo</mat-hint>
             <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
               Ingrese una dirección de correo válida
@@ -65,37 +66,17 @@
           </mat-form-field>
         </div>
       </mat-grid-tile>
-
-      <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <mat-grid-tile [colspan]="1" [rowspan]="3">
         <div class="label-input-container">
           <label for="fecha">Fecha de entrada:</label>
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Elige Fecha</mat-label>
-            <input matInput [(ngModel)]="fecha" name="fecha" [min]="minDate" [max]="maxDate" [matDatepicker]="picker" id="fecha">
-            <mat-hint>MM/DD/AAAA</mat-hint>
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
+          <app-Calendario #fechaInput required></app-Calendario>
         </div>
       </mat-grid-tile>
-
-      <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <div class="label-input-container">
-          <label for="hora">Hora de entrada:</label>
-          <mat-form-field appearance="fill">
-            <mat-label>Elige</mat-label>
-            <mat-select [disabled]="disableSelect.value" [(value)]="hora" id="hora">
-              <mat-option value="option1">Option 1</mat-option>
-              <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
-              <mat-option value="option3">Option 3</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-      </mat-grid-tile>
+      <br>
+      <br>
+      <br>
     </mat-grid-list>
-    <br>
     <button mat-raised-button color="primary">Reservar</button>
-    <br>
-    <br>
   </form>
+  <br>
 </div>

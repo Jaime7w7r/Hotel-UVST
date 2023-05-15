@@ -14,6 +14,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
 
+import { CalendarModule } from 'primeng/calendar';
+
 @NgModule({
   exports: [
     MatGridListModule,
@@ -31,6 +33,7 @@ import { FormsModule } from '@angular/forms';
     MatDatepickerModule,
     MatNativeDateModule,
     FormsModule,
+    CalendarModule,
   ]
 })
 export class MaterialModule { }
