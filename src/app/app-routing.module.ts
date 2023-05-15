@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: 'inicio', component: InicioComponent},
   {path: 'habitaciones', component: HabitacionesComponent},
   {path: 'galeria', component: GaleriaComponent},
-  {path: 'servicios', component: ReservacionComponent},
+  {path: 'servicios/:hab', component: ReservacionComponent},
   {path: 'nosotros', component: NosotrosComponent},
   {path: 'contacto', component: ContactoComponent},
   { path: '**', pathMatch: 'full', redirectTo: 'inicio' }

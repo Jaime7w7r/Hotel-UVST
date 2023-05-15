@@ -31,6 +31,10 @@ label {
   width: 70%;
 }
 
+.calendario{
+  width: 100%;
+}
+
 .mat-input-element {
   width: 100%;
 }

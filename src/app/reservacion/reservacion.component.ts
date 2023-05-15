@@ -1,7 +1,8 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PaginaService } from '../pagina.service';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 
 import { CalendarioComponent } from '../Calendario/Calendario.component';
@@ -19,10 +20,25 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   templateUrl: './reservacion.component.html',
   styleUrls: ['./reservacion.component.css']
 })
-export class ReservacionComponent {
+export class ReservacionComponent implements OnInit {
   @ViewChild('fechaInput')
   fechaInput!: CalendarioComponent;
   rangeDates: Date[];
+
+  hab: string = '';
+
+  constructor(
+    private pagina: PaginaService,
+    private route: ActivatedRoute
+  ) {
+    this.rangeDates = [];
+    pagina.setValor('servicios');
+  }
+
+  ngOnInit() {
+    const habParam = this.route.snapshot.paramMap.get('hab');
+    this.hab = habParam !== null ? habParam : '';
+  }
 
   nombre: string = '';
   apellido: string = '';
@@ -83,12 +99,6 @@ export class ReservacionComponent {
 
   disableSelect = new FormControl(false);
 
-  constructor(private pagina: PaginaService) {
-
-    this.rangeDates = [];
-
-    pagina.setValor('servicios');
-  }
 
   onSubmit(formulario: NgForm) {
     const fechaSeleccionada = this.fechaInput.rangeDates;
@@ -97,8 +107,6 @@ export class ReservacionComponent {
     console.log(formulario.value);
     // Resto del código para procesar los datos del formulario
   }
-
-  hab = '';
 
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
