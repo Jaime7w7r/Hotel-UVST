@@ -68,3 +68,7 @@ p{
   color: white;
   font-size: 1.5em;
 }
+
+.form-control{
+  max-width: 150px;
+}

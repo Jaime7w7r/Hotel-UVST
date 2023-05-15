@@ -1,21 +1,23 @@
-<div class="contacto">
-    <h2>Contáctanos</h2>
-    <p>Si tienes alguna duda o comentario, no dudes en contactarnos a través de los siguientes medios:</p>
-    <ul>
-      <li>Teléfono: 449-123-45-67</li>
-      <li>Email: hoteluaa@edu.uaa.mx</li>
-      <li>Dirección: Benemerita Universidad Autónoma de Aguascalientes</li>
-    </ul>
-<br>
-    <h4>Este proyecto universitario fue realizado por los estudiantes de 6to semestre de ISC:</h4>
-    <p>Leonardo Javier Hernandez Martinez</p>
-    <p>Jaime Adolfo Varela Martínez</p>
-    <p>Alfredo Quezada Marquez</p>
-    <p>Barbara Jimena Silva Jaime</p>
-    <p>Para la materia de Tecnologías Web en la Universidad Autónoma de Aguascalientes</p>
-
-  
-    <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
-    <a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a>
-    <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+<br><br><br><br>
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Telefono</th>
+        <th>Fecha de Entrada</th>
+        <th>Tipo de Habitacion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let componente of componentes">
+        <td>{{ componente.nombre }}</td>
+        <td>{{ componente.apellido }}</td>
+        <td>{{ componente.telefono }}</td>
+        <td>{{ componente.fecha[0] }}</td>
+        <td>{{ componente.habitacion }}</td>
+      </tr>
+    </tbody>
+  </table>
   </div>

@@ -14,9 +14,10 @@ import { HabitacionesComponent } from './habitaciones/habitaciones.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { CalendarioComponent } from './Calendario/Calendario.component';
+import { YoutubeUrlPipe } from './youtube-url.pipe';
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     NavbarComponent,
     ReservacionComponent,
@@ -26,8 +27,9 @@ import { CalendarioComponent } from './Calendario/Calendario.component';
     FooterComponent,
     GaleriaComponent,
     HabitacionesComponent,
-      CalendarioComponent
-   ],
+    CalendarioComponent,
+    YoutubeUrlPipe
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
