@@ -75,7 +75,7 @@ export class ReservacionComponent implements OnInit {
       telefono: this.telefono,
       correo: this.correo,
       habitacion: this.hab,
-      fecha: ''
+      fecha: fechaSeleccionada
     };
 
     // Obtener el array actual de reservaciones del Local Storage
