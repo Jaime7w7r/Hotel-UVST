@@ -66,13 +66,21 @@
           </mat-form-field>
         </div>
       </mat-grid-tile>
-      <mat-grid-tile [colspan]="2" [rowspan]="3" class="calendar align-top">
+      <mat-grid-tile [colspan]="2" [rowspan]="4" class="calendar align-top">
         <div>
           <div class="calendario">
             <label for="fecha">Fecha de entrada : </label>
             <app-Calendario #fechaInput required></app-Calendario>
           </div>
           <div class="spacer"></div>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="2" [rowspan]="2" class="">
+        <div>
+          <h4>Tipo de cambio: </h4>
+          <h5>USD a MXN: 17.46</h5>
+          <h5>USD a EUR: {{ usdToEur }}</h5>
+          <h5>USD a GBP: {{ usdToGbp }}</h5>
         </div>
       </mat-grid-tile>
       <br>

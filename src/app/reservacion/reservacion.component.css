@@ -32,7 +32,7 @@ label {
 }
 
 .calendario{
-  width: 100%;
+  width: 80%;
 }
 
 .mat-input-element {
@@ -49,7 +49,7 @@ button{
 }
 
 .spacer {
-  height: 230px; 
+  height: 350px; 
 }
 
 

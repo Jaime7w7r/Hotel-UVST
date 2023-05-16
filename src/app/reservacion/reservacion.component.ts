@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 
 import { CalendarioComponent } from '../Calendario/Calendario.component';
 import { Calendar } from 'primeng/calendar';
+import { ExchangeRateAPIService } from '../exchange-rate-api.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -24,10 +25,14 @@ export class ReservacionComponent implements OnInit {
   @ViewChild('fechaInput')
   fechaInput!: CalendarioComponent;
   rangeDates: Date[];
+  
+  usdToEur: number | undefined;
+  usdToGbp: number | undefined;
 
   hab: string = '';
 
   constructor(
+    private exchangeRateAPIService: ExchangeRateAPIService,
     private pagina: PaginaService,
     private route: ActivatedRoute
   ) {
@@ -36,6 +41,10 @@ export class ReservacionComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.exchangeRateAPIService.getExchangeRates('USD').then(data => {
+      this.usdToEur = data.conversion_rates.EUR;
+      this.usdToGbp = data.conversion_rates.GBP;
+    });
     const habParam = this.route.snapshot.paramMap.get('hab');
     this.hab = habParam !== null ? habParam : '';
   }
@@ -58,7 +67,6 @@ export class ReservacionComponent implements OnInit {
       })
       return;
     }
-
     const fechaSeleccionada = this.fechaInput.rangeDates;
 
     const reservacion = {
@@ -67,7 +75,7 @@ export class ReservacionComponent implements OnInit {
       telefono: this.telefono,
       correo: this.correo,
       habitacion: this.hab,
-      fecha: fechaSeleccionada
+      fecha: ''
     };
 
     // Obtener el array actual de reservaciones del Local Storage
@@ -89,7 +97,6 @@ export class ReservacionComponent implements OnInit {
 
     // Mostrar mensaje de éxito o realizar otras acciones necesarias
     console.log('Reservación guardada exitosamente:', reservacion);
-    console.log(fechaSeleccionada);
     Swal.fire({
       icon: 'success',
       title: 'Éxito',
@@ -101,9 +108,7 @@ export class ReservacionComponent implements OnInit {
 
 
   onSubmit(formulario: NgForm) {
-    const fechaSeleccionada = this.fechaInput.rangeDates;
     console.log(formulario.value);
-    console.log(fechaSeleccionada);
     console.log(formulario.value);
     // Resto del código para procesar los datos del formulario
   }
