@@ -2,19 +2,36 @@
 <html lang="en">
 
 <head>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then((registration) => {
+            console.log('Service Worker registrado con éxito:', registration);
+          })
+          .catch((error) => {
+            console.log('Error al registrar el Service Worker:', error);
+          });
+      });
+    }
+  </script>
+
   <meta charset="utf-8">
   <title>Hotel Un Verano Sin Ti</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="assets/icon.png">
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&amp;display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1976d2">
 </head>
 
 <body>
   <app-root></app-root>
   <script src="https://kit.fontawesome.com/9bf774af31.js" crossorigin="anonymous"></script>
+  <noscript>Please enable JavaScript to continue using this application.</noscript>
 </body>
 
 </html>
