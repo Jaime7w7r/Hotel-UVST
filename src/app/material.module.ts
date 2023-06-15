@@ -13,7 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
-
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
@@ -34,6 +34,7 @@ import { CalendarModule } from 'primeng/calendar';
     MatNativeDateModule,
     FormsModule,
     CalendarModule,
+    MatToolbarModule
   ]
 })
 export class MaterialModule { }
