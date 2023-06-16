@@ -158,6 +158,12 @@ export class NosotrosComponent {
       foto: 'assets/perfil/JAVM.jpg',
       desc: 'Hola'
     },
+    {
+      name: 'Emilio',
+      id: 'ID : ',
+      foto: 'assets/perfil/Emi.jpg',
+      desc: 'MMM'
+    }
   ];
 
   color: ThemePalette = 'primary';

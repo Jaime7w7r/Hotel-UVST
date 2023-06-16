@@ -1,16 +1,15 @@
 .navbar {
-  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  background-color: rgb(10, 10, 10, 0.9);
+  background-color: rgba(10, 10, 10, 0.9);
   color: white;
-  padding: 10px 20px;
+  overflow-x: hidden;
 }
 
 .logo {
-  margin-right: 20px;
+  margin-left: 20px;
 }
 
 .logo img {
@@ -21,12 +20,12 @@
   display: flex;
   align-items: center;
   list-style: none;
-  margin: 0;
+  margin-right: 20px;
   padding: 0;
 }
 
 .nav-item {
-  margin-left: 20px;
+  margin-left: 30px;
   font-size: 20px;
   font-family: 'Arial', sans-serif;
   letter-spacing: 2px;
@@ -74,14 +73,20 @@ p {
   }
 
   .logo {
-    margin: 10px 0;
+    margin: 10px auto;
     text-align: center;
+  }
+
+  .navbar-container {
+    text-align: center;
+    width: 100%;
   }
 
   .nav-items {
     flex-wrap: wrap;
     justify-content: center;
     margin: 20px 0;
+    width: 100%;
   }
 
   .nav-item {

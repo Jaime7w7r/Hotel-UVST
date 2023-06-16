@@ -16,6 +16,10 @@ import { MaterialModule } from './material.module';
 import { CalendarioComponent } from './Calendario/Calendario.component';
 import { YoutubeUrlPipe } from './youtube-url.pipe';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { LoginComponent } from './login/login.component';
+import { AccesibilidadComponent } from './accesibilidad/accesibilidad.component';
+import { GraficosComponent } from './graficos/graficos.component';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +33,10 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     GaleriaComponent,
     HabitacionesComponent,
     CalendarioComponent,
-    YoutubeUrlPipe
+    YoutubeUrlPipe,
+    LoginComponent,
+    AccesibilidadComponent,
+    GraficosComponent
   ],
   imports: [
     BrowserModule,

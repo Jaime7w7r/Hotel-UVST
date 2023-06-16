@@ -4,6 +4,7 @@
   background-color: rgb(0, 0, 0, 0.7);
   color: white;
   border-radius: 10px;
+  padding: 20px;
 }
 
 h2 {
@@ -27,29 +28,25 @@ label {
   margin-bottom: 8px;
 }
 
-.label-input-container {
-  width: 70%;
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.calendario{
-  width: 80%;
+.form-column {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.form-column:last-child {
+  margin-right: 0;
 }
 
 .mat-input-element {
   width: 100%;
 }
 
-button{
-  width: 20%;
-  left: 40%;
+button {
+  width: 100%;
+  margin-top: 20px;
 }
-
-.align-top {
-  vertical-align: top;
-}
-
-.spacer {
-  height: 350px; 
-}
-
-

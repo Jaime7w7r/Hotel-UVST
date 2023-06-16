@@ -1,27 +1,91 @@
 <header class="navbar">
   <div class="logo">
     <span class="logo-spacer"></span>
-    <img src="assets/logo.png" alt="Logo de la empresa">
+    <img src="assets/logo.png" alt="Logo de la empresa" />
+    <h4 *ngIf="User">Hi {{UserName}}</h4>
+    <h4 *ngIf="User">Hi Adminls</h4>
+    <app-accesibilidad></app-accesibilidad>
   </div>
-    <p>Hotel Un Verano Sin Ti</p>
-  <div>Un Verano Sin Ti: Tu escapada inolvidable al paraíso</div>
 
   <div class="navbar-container">
+    <p>Hotel Un Verano Sin Ti</p>
+    <div>Un Verano Sin Ti: Tu escapada inolvidable al paraíso</div>
     <ul class="nav-items">
-      <li class="nav-item" routerLinkActive="active"><a [ngClass]="{'seleccionado': valor === 'inicio'}"
-          class="nav-link" [routerLink]="['inicio']">Inicio</a></li>
-      <li class="nav-item" routerLinkActive="active"><a [ngClass]="{'seleccionado': valor === 'habitaciones'}"
-          class="nav-link" [routerLink]="['habitaciones']">Habitaciones</a></li>
-      <li class="nav-item" routerLinkActive="active"><a [ngClass]="{'seleccionado': valor === 'galeria'}"
-          class="nav-link" [routerLink]="['galeria']">Galeria</a></li>
-      <li class="nav-item" routerLinkActive="active"><a [ngClass]="{'seleccionado': valor === 'servicios'}"
-          class="nav-link" [routerLink]="['servicios', ' ']">Servicios</a></li>
-      <li class="nav-item" routerLinkActive="active"><a [ngClass]="{'seleccionado': valor === 'nosotros'}"
-          class="nav-link" [routerLink]="['nosotros']"> Nosotros</a></li>
-      <li class="nav-item" routerLinkActive="active"><a [ngClass]="{'seleccionado': valor === 'contacto'}"
-          class="nav-link" [routerLink]="['contacto']"> Reservaciones</a></li>
+      <li class="nav-item" routerLinkActive="active">
+        <a
+          [ngClass]="{ seleccionado: valor === 'inicio' }"
+          class="nav-link"
+          [routerLink]="['inicio']"
+          >Inicio</a
+        >
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a
+          [ngClass]="{ seleccionado: valor === 'login' }"
+          class="nav-link"
+          [routerLink]="['login']"
+          >Login</a
+        >
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a
+          [ngClass]="{ seleccionado: valor === 'habitaciones' }"
+          class="nav-link"
+          [routerLink]="['habitaciones']"
+          >Habitaciones</a
+        >
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a
+          [ngClass]="{ seleccionado: valor === 'galeria' }"
+          class="nav-link"
+          [routerLink]="['galeria']"
+          >Galeria</a
+        >
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a
+          [ngClass]="{ seleccionado: valor === 'nosotros' }"
+          class="nav-link"
+          [routerLink]="['nosotros']"
+        >
+          Nosotros</a
+        >
+      </li>
+      <li *ngIf="User" class="nav-item" routerLinkActive="active">
+        <a
+          [ngClass]="{ seleccionado: valor === 'servicios' }"
+          class="nav-link"
+          [routerLink]="['servicios', ' ']"
+          >Servicios</a
+        >
+      </li>
+      <li *ngIf="User" class="nav-item" routerLinkActive="active">
+        <a
+          [ngClass]="{ seleccionado: valor === 'contacto' }"
+          class="nav-link"
+          [routerLink]="['contacto']"
+        >
+          Reservaciones</a
+        >
+      </li>
+      <li *ngIf="User" class="nav-item" routerLinkActive="active">
+        <a
+          [ngClass]="{ seleccionado: valor === 'graficas' }"
+          class="nav-link"
+          [routerLink]="['graficos']"
+        >
+          Graficos</a
+        >
+      </li>
       <li class="nav-item">
-        <input #msg class="form-control" (keyup.enter)="ver(msg.value)" type="text" placeholder="Buscar">
+        <input
+          #msg
+          class="form-control"
+          (keyup.enter)="ver(msg.value)"
+          type="text"
+          placeholder="Buscar"
+        />
       </li>
     </ul>
   </div>

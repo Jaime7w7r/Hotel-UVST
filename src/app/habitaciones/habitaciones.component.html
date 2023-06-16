@@ -1,99 +1,111 @@
-<br><br><br><br>
 <h1>Revisa nuestras habitaciones</h1>
-<mat-card class="example-card" id="card-0">
-  <mat-card-header>
-    <mat-card-title>Suite Deluxe Premium Level</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <mat-card-title-group>
-      <img mat-card-xl-image src="assets/galeria/deluxepremium.jpg">
-      <mat-card-content>
-        <table>
-          <tr>
-            <td>Amplias habitaciones elegantes y luminosas ideales para la privacidad y desconexión.</td>
-            <td>Conexión Wi-Fi (sin cargo), Caja fuerte y Escritorio</td>
-            <td class="price">Desde $2,792 MXN/noche</td>
-          </tr>
 
-          <tr>
-            <td colspan="2">4 Personas 4 adultos máx. / 2 niños máx</td>
-            <button [routerLink]="['../servicios', 'option1']" mat-raised-button color="primary">Reservar</button>
-          </tr>
-        </table>
-      </mat-card-content>
-    </mat-card-title-group>
-  </mat-card-content>
-</mat-card>
-<br>
-<mat-card class="example-card" id="card-1">
-  <mat-card-header>
-    <mat-card-title>Familiar</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <mat-card-title-group>
-      <img mat-card-xl-image src="assets/galeria/familiar.jpg">
-      <mat-card-content>
-        <table>
-          <tr>
-            <td>Disfrute de una vacaciones en familia con esta suite de dos habitaciones y baños privados.</td>
-            <td>Conexión Wi-Fi (sin cargo), Caja fuerte y Escritorio</td>
-            <td class="price">Desde $3,286 MXN/noche</td>
-          </tr>
-          <tr>
-            <td colspan="2">5 Personas 5 adultos máx. / 3 niños máx.</td>
-            <button [routerLink]="['../servicios', 'option2']" mat-raised-button color="primary">Reservar</button>
-          </tr>
-        </table>
-      </mat-card-content>
-    </mat-card-title-group>
-  </mat-card-content>
-</mat-card>
-<br>
-<mat-card class="example-card" id="card-2">
-  <mat-card-header>
-    <mat-card-title>Familiar Premium Level</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <mat-card-title-group>
-      <img mat-card-xl-image src="assets/galeria/familiarpremium.jpg">
-      <mat-card-content>
-        <table>
-          <tr>
-            <td>Amplias habitaciones elegantes y luminosas ideales para la privacidad y desconexión.</td>
-            <td>Conexión Wi-Fi (sin cargo), Caja fuerte y Escritorio</td>
-            <td class="price">Desde $2,792 MXN/noche</td>
-          </tr>
+<div class="container">
+  <div class="example-card" id="card-0">
+    <h2>Suite Deluxe Premium Level</h2>
+    <img src="assets/galeria/deluxepremium.jpg" />
+    <table>
+      <tr>
+        <td>
+          Amplias habitaciones elegantes y luminosas ideales para la privacidad
+          y desconexión.
+        </td>
+        <td>Conexión Wi-Fi (sin cargo), Caja fuerte y Escritorio</td>
+        <td class="price">Desde $2,792 MXN/noche</td>
+      </tr>
+      <tr>
+        <td colspan="2">4 Personas 4 adultos máx. / 2 niños máx</td>
+        <td>
+          <button
+            [routerLink]="['../servicios', 'option1']"
+            mat-raised-button
+            color="primary"
+          >
+            Reservar
+          </button>
+        </td>
+      </tr>
+    </table>
+  </div>
 
-          <tr>
-            <td colspan="2">4 Personas 4 adultos máx. / 2 niños máx</td>
-            <button [routerLink]="['../servicios', 'option3']" mat-raised-button color="primary">Reservar</button>
-          </tr>
-        </table>
-      </mat-card-content>
-    </mat-card-title-group>
-  </mat-card-content>
-</mat-card>
-<br>
-<mat-card class="example-card" id="card-3">
-  <mat-card-header>
-    <mat-card-title>Grand Master Suite Vista Mar Frontal Premium Level</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <mat-card-title-group>
-      <img mat-card-xl-image src="assets/galeria/grandmaster.jpg">
-      <mat-card-content>
-        <table>
-          <tr>
-            <td>Amplia suite con magníficas vistas al Océano Pacífico y estancia con comedor y sala de TV.</td>
-            <td>Conexión Wi-Fi (sin cargo), Caja fuerte y Escritorio</td>
-            <td class="price">Desde $4,002 MXN/noche</td>
-          </tr>
-          <tr>
-            <td colspan="2"> 2 Personas 2 adultos máx.</td>
-            <button [routerLink]="['../servicios', 'option4']" mat-raised-button color="primary">Reservar</button>
-          </tr>
-        </table>
-      </mat-card-content>
-    </mat-card-title-group>
-  </mat-card-content>
-</mat-card>
+  <div class="example-card" id="card-1">
+    <h2>Familiar</h2>
+    <img src="assets/galeria/familiar.jpg" />
+    <table>
+      <tr>
+        <td>
+          Disfrute de unas vacaciones en familia con esta suite de dos
+          habitaciones y baños privados.
+        </td>
+        <td>Conexión Wi-Fi (sin cargo), Caja fuerte y Escritorio</td>
+        <td class="price">Desde $3,286 MXN/noche</td>
+      </tr>
+      <tr>
+        <td colspan="2">5 Personas 5 adultos máx. / 3 niños máx.</td>
+        <td>
+          <button
+            [routerLink]="['../servicios', 'option2']"
+            mat-raised-button
+            color="primary"
+          >
+            Reservar
+          </button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="example-card" id="card-2">
+    <h2>Familiar Premium Level</h2>
+    <img src="assets/galeria/familiarpremium.jpg" />
+    <table>
+      <tr>
+        <td>
+          Amplias habitaciones elegantes y luminosas ideales para la privacidad
+          y desconexión.
+        </td>
+        <td>Conexión Wi-Fi (sin cargo), Caja fuerte y Escritorio</td>
+        <td class="price">Desde $2,792 MXN/noche</td>
+      </tr>
+      <tr>
+        <td colspan="2">4 Personas 4 adultos máx. / 2 niños máx</td>
+        <td>
+          <button
+            [routerLink]="['../servicios', 'option3']"
+            mat-raised-button
+            color="primary"
+          >
+            Reservar
+          </button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="example-card" id="card-3">
+    <h2>Grand Master Suite Vista Mar Frontal Premium Level</h2>
+    <img src="assets/galeria/grandmaster.jpg" />
+    <table>
+      <tr>
+        <td>
+          Amplia suite con magníficas vistas al Océano Pacífico y estancia con
+          comedor y sala de TV.
+        </td>
+        <td>Conexión Wi-Fi (sin cargo), Caja fuerte y Escritorio</td>
+        <td class="price">Desde $4,002 MXN/noche</td>
+      </tr>
+      <tr>
+        <td colspan="2">2 Personas 2 adultos máx.</td>
+        <td>
+          <button
+            [routerLink]="['../servicios', 'option4']"
+            mat-raised-button
+            color="primary"
+          >
+            Reservar
+          </button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

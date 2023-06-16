@@ -1,20 +1,30 @@
 .foot {
     width: 100%;
-    background-color: rgb(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.7);
     color: white;
     text-align: center;
-}
-
-table {
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  table {
     width: 100%;
     text-align: center;
     background-image: url('../../assets/icon.png');
     background-repeat: no-repeat;
     background-position: center;
-}
-
-a{
+    margin-bottom: 20px;
+  }
+  
+  a {
     margin-left: 10px;
     color: white;
     font-size: 20px;
-}
+  }
+  
+  @media (max-width: 500px) {
+    table {
+      font-size: 14px;
+    }
+  }
+  

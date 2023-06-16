@@ -1,0 +1,34 @@
+<div class="top-container">
+    <button class="btn btn-dark" (click)="toggleButtons()">
+      <i class="fa-solid fa-universal-access"></i> Accesibilidad
+    </button>
+    
+    <div class="button-container" *ngIf="showButtons">
+      <button class="btn btn-dark button-animation" (click)="toggleHighContrast()">
+        <i class="fas fa-adjust"></i> Alto Contraste
+      </button>
+  
+      <button class="btn btn-dark button-animation" (click)="increaseTextSize()">
+        <i class="fas fa-plus"></i> Aumentar Texto
+      </button>
+  
+      <button class="btn btn-dark button-animation" (click)="decreaseTextSize()">
+        <i class="fas fa-minus"></i> Disminuir Texto
+      </button>
+  
+      <select class="form-select" (change)="changeLanguage($event)">
+        <option value="es">Español</option>
+        <option value="en">English</option>
+      </select>
+  
+      <button class="btn btn-dark button-animation" (click)="toggleScreenReader()" *ngIf="speechSynthesisSupported">
+        <i class="fa-solid fa-ear-listen fa-beat-fade"></i>
+        {{ screenReaderEnabled ? 'Detener Lector de Pantalla' : 'Iniciar Lector de Pantalla' }}
+      </button>
+    </div>
+  
+    <div class="container text-center">
+      <p [ngClass]="{'high-contrast': isHighContrastMode}" [ngStyle]="{'font-size': fontSize + '%'}">{{ text }}</p>
+    </div>
+  </div>
+  

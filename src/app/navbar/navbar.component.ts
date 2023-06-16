@@ -10,6 +10,12 @@ import { PaginaService } from '../pagina.service';
 export class NavbarComponent {
   public valor: string | undefined;
 
+  //aquí verificaciones
+  //mejor importar un servicio
+  User: boolean = false;
+  Admin: boolean = true;
+  UserName: string = 'Jaime';
+
   constructor(private router: Router, private pagina: PaginaService) {
     this.pagina.valor$.subscribe(valor => {
       this.valor = valor;

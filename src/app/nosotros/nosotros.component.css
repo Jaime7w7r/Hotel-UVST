@@ -106,3 +106,9 @@ span {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.opiniones {
+  width: 100%;
+  overflow-x: auto;
+  max-height: 750px;
+}

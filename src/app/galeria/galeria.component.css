@@ -3,6 +3,12 @@
   margin: 1em;
 }
 
+h1{
+  font-family: 'Lobster';
+  color: white;
+  font-size: 3em;
+}
+
 img {
   max-width: 100%;
   margin-bottom: 0.5em;
@@ -16,57 +22,50 @@ img:hover {
   outline: 3px solid #F257C9;
 }
 
-.galeria {
+.galeria,
+.Habitaciones,
+.Gimnasio,
+.Comedor,
+.Piscina {
   margin: 1em;
   column-gap: 0.5em;
-  columns: 5 320px;
   overflow: hidden;
 }
 
-@font-face {
-  font-family: 'Lobster';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('../../assets/fuentes/neILzCirqoswsqX9zoKmMw.woff2');
-}
-
-p {
-  font-family: 'Lobster';
-  color: white;
-  font-size: 3em;
+.galeria {
+  columns: 5;
 }
 
 .Habitaciones {
-  margin: 1em;
-  column-gap: 0.5em;
-  columns: 4 320px;
-  overflow: hidden;
+  columns: 4;
 }
 
 .Gimnasio {
-  margin: 1em;
-  column-gap: 0.5em;
-  columns: 2 320px;
-  overflow: hidden;
+  columns: 2;
   width: 50%;
   margin-left: 25%;
 }
 
 .Comedor {
-  margin: 1em;
-  column-gap: 0.5em;
-  columns: 3 320px;
+  columns: 3;
   width: 60%;
   margin-left: 20%;
-  overflow: hidden;
 }
 
 .Piscina {
-  margin: 1em;
-  column-gap: 0.5em;
-  columns: 2 320px;
+  columns: 2;
   width: 40%;
   margin-left: 30%;
-  overflow: hidden;
+}
+
+@media screen and (max-width: 768px) {
+  .galeria,
+  .Habitaciones,
+  .Gimnasio,
+  .Comedor,
+  .Piscina {
+    columns: 2;
+    width: 100%;
+    margin-left: 0;
+  }
 }
