@@ -13,7 +13,7 @@ export class NavbarComponent {
   //aquí verificaciones
   //mejor importar un servicio
   User: boolean = false;
-  Admin: boolean = true;
+  Admin: boolean = false;
   UserName: string = 'Jaime';
 
   constructor(private router: Router, private pagina: PaginaService) {
