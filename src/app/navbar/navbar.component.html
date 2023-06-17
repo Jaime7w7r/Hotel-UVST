@@ -2,8 +2,10 @@
   <div class="logo">
     <span class="logo-spacer"></span>
     <img src="assets/logo.png" alt="Logo de la empresa" />
-    <h4 *ngIf="User">Hi {{UserName}}</h4>
-    <h4 *ngIf="Admin">Hi Admin</h4>
+    <ul>
+      <li *ngIf="tipoUsuario === 'admin'">Hola Administrador</li>
+      <li *ngIf="tipoUsuario === 'user'">Hola {{ nombre }}</li>
+    </ul>
     <!--<app-accesibilidad></app-accesibilidad>-->
   </div>
 
@@ -11,7 +13,11 @@
     <p>Hotel Un Verano Sin Ti</p>
     <div>Un Verano Sin Ti: Tu escapada inolvidable al paraíso</div>
     <ul class="nav-items">
-      <li class="nav-item" routerLinkActive="active">
+      <li
+        *ngIf="tipoUsuario !== 'admin'"
+        class="nav-item"
+        routerLinkActive="active"
+      >
         <a
           [ngClass]="{ seleccionado: valor === 'inicio' }"
           class="nav-link"
@@ -19,7 +25,11 @@
           >Inicio</a
         >
       </li>
-      <li class="nav-item" routerLinkActive="active">
+      <li
+        *ngIf="tipoUsuario !== 'user' && tipoUsuario !== 'admin'"
+        class="nav-item"
+        routerLinkActive="active"
+      >
         <a
           [ngClass]="{ seleccionado: valor === 'login' }"
           class="nav-link"
@@ -27,7 +37,11 @@
           >Login</a
         >
       </li>
-      <li class="nav-item" routerLinkActive="active">
+      <li
+        *ngIf="tipoUsuario !== 'admin'"
+        class="nav-item"
+        routerLinkActive="active"
+      >
         <a
           [ngClass]="{ seleccionado: valor === 'habitaciones' }"
           class="nav-link"
@@ -35,7 +49,11 @@
           >Habitaciones</a
         >
       </li>
-      <li class="nav-item" routerLinkActive="active">
+      <li
+        *ngIf="tipoUsuario !== 'admin'"
+        class="nav-item"
+        routerLinkActive="active"
+      >
         <a
           [ngClass]="{ seleccionado: valor === 'galeria' }"
           class="nav-link"
@@ -52,7 +70,11 @@
           Nosotros</a
         >
       </li>
-      <li *ngIf="User" class="nav-item" routerLinkActive="active">
+      <li
+        *ngIf="tipoUsuario === 'user'"
+        class="nav-item"
+        routerLinkActive="active"
+      >
         <a
           [ngClass]="{ seleccionado: valor === 'servicios' }"
           class="nav-link"
@@ -60,7 +82,11 @@
           >Servicios</a
         >
       </li>
-      <li *ngIf="User" class="nav-item" routerLinkActive="active">
+      <li
+        *ngIf="tipoUsuario === 'user'"
+        class="nav-item"
+        routerLinkActive="active"
+      >
         <a
           [ngClass]="{ seleccionado: valor === 'contacto' }"
           class="nav-link"
@@ -69,13 +95,43 @@
           Reservaciones</a
         >
       </li>
-      <li *ngIf="User" class="nav-item" routerLinkActive="active">
+      <li
+        *ngIf="tipoUsuario === 'admin'"
+        class="nav-item"
+        routerLinkActive="active"
+      >
         <a
           [ngClass]="{ seleccionado: valor === 'graficas' }"
           class="nav-link"
           [routerLink]="['graficos']"
         >
           Graficos</a
+        >
+      </li>
+      <li
+        *ngIf="tipoUsuario === 'admin'"
+        class="nav-item"
+        routerLinkActive="active"
+      >
+        <a
+          [ngClass]="{ seleccionado: valor === 'reservaciones' }"
+          class="nav-link"
+          [routerLink]="['reservaciones']"
+        >
+          Reservaciones</a
+        >
+      </li>
+      <li
+        *ngIf="tipoUsuario === 'admin'"
+        class="nav-item"
+        routerLinkActive="active"
+      >
+        <a
+          [ngClass]="{ seleccionado: valor === 'usuarios' }"
+          class="nav-link"
+          [routerLink]="['usuarios']"
+        >
+          Usuarios</a
         >
       </li>
       <li class="nav-item">

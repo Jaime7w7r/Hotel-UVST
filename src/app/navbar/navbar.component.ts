@@ -9,16 +9,18 @@ import { PaginaService } from '../pagina.service';
 })
 export class NavbarComponent {
   public valor: string | undefined;
-
-  //aquí verificaciones
-  //mejor importar un servicio
-  User: boolean = false;
-  Admin: boolean = false;
-  UserName: string = 'Jaime';
+  public tipoUsuario: string | undefined;
+  public nombre: string | undefined;
 
   constructor(private router: Router, private pagina: PaginaService) {
     this.pagina.valor$.subscribe(valor => {
       this.valor = valor;
+    });
+    this.pagina.tipoUsuario$.subscribe(tipoUsuario => {
+      this.tipoUsuario = tipoUsuario;
+    });
+    this.pagina.nombre$.subscribe(nombre => {
+      this.nombre = nombre;
     });
   }
 

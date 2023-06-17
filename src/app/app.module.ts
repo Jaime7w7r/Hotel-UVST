@@ -18,7 +18,11 @@ import { YoutubeUrlPipe } from './youtube-url.pipe';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { LoginComponent } from './login/login.component';
 import { AccesibilidadComponent } from './accesibilidad/accesibilidad.component';
-import { GraficosComponent } from './graficos/graficos.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { GraficaComponent } from './grafica/grafica.component';
+import { ReservacionesComponent } from './reservaciones/reservaciones.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 
 @NgModule({
@@ -36,12 +40,16 @@ import { GraficosComponent } from './graficos/graficos.component';
     YoutubeUrlPipe,
     LoginComponent,
     AccesibilidadComponent,
-    GraficosComponent
+    GraficaComponent,
+    ReservacionesComponent,
+    UsuariosComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
+    NgApexchartsModule,
     BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
