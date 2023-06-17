@@ -23,6 +23,8 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { GraficaComponent } from './grafica/grafica.component';
 import { ReservacionesComponent } from './reservaciones/reservaciones.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { PregfrecuentesComponent } from './pregfrecuentes/pregfrecuentes.component';
+import { ContactanosComponent } from './contactanos/contactanos.component';
 
 
 @NgModule({
@@ -42,7 +44,9 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
     AccesibilidadComponent,
     GraficaComponent,
     ReservacionesComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    PregfrecuentesComponent,
+    ContactanosComponent
   ],
   imports: [
     HttpClientModule,

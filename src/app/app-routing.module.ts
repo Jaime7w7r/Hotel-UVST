@@ -8,6 +8,8 @@ import { HabitacionesComponent } from './habitaciones/habitaciones.component';
 import { GaleriaComponent } from './galeria/galeria.component';
 import { LoginComponent } from './login/login.component';
 import { GraficaComponent } from './grafica/grafica.component';
+import { ContactanosComponent } from './contactanos/contactanos.component';
+import { PregfrecuentesComponent } from './pregfrecuentes/pregfrecuentes.component';
 
 const routes: Routes = [
   { path: 'inicio', component: InicioComponent },
@@ -18,6 +20,8 @@ const routes: Routes = [
   { path: 'nosotros', component: NosotrosComponent },
   { path: 'contacto', component: ContactoComponent },
   { path: 'graficos', component: GraficaComponent},
+  { path: 'contactanos', component: ContactanosComponent},
+  { path: 'preguntas', component: PregfrecuentesComponent},
   { path: '**', pathMatch: 'full', redirectTo: 'inicio' }
 ];
 

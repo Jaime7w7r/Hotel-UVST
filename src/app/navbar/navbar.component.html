@@ -38,7 +38,7 @@
         >
       </li>
       <li
-        *ngIf="tipoUsuario !== 'admin'"
+        *ngIf="tipoUsuario === 'user'"
         class="nav-item"
         routerLinkActive="active"
       >
@@ -93,6 +93,30 @@
           [routerLink]="['contacto']"
         >
           Reservaciones</a
+        >
+      </li>
+      <li
+        *ngIf="tipoUsuario !== 'admin'"
+        class="nav-item"
+        routerLinkActive="active"
+      >
+        <a
+          [ngClass]="{ seleccionado: valor === 'preguntas ' }"
+          class="nav-link"
+          [routerLink]="['preguntas']"
+          >Preguntas Frecuentes</a
+        >
+      </li>
+      <li
+        *ngIf="tipoUsuario !== 'admin'"
+        class="nav-item"
+        routerLinkActive="active"
+      >
+        <a
+          [ngClass]="{ seleccionado: valor === 'contactanos' }"
+          class="nav-link"
+          [routerLink]="['contactanos']"
+          >Contactos</a
         >
       </li>
       <li
