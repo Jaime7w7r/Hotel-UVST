@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
 
 interface Usuario {
+  id: string;
   correo: string;
   contraseña: string;
   nombre: string;
@@ -36,13 +37,14 @@ export class LoginComponent {
       console.log('Usuario válido');
 
       if (usuarioEncontrado.correo === 'admin@gmail.com') {
-        console.log('¡Bienvenido, administrador!');
+        console.log('administrador');
         this.pagina.setTipoUsuario('admin');
       } else {
         this.pagina.setTipoUsuario('user');
       }
 
       this.pagina.setNombre(usuarioEncontrado.nombre);
+      this.pagina.setId(usuarioEncontrado.id);
 
       this.router.navigate(['/inicio']);
     } else {

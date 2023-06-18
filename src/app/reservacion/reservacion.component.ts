@@ -4,6 +4,7 @@ import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/fo
 import { ErrorStateMatcher } from '@angular/material/core';
 import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
+import { HttpClient } from '@angular/common/http';
 
 import { CalendarioComponent } from '../Calendario/Calendario.component';
 import { Calendar } from 'primeng/calendar';
@@ -25,7 +26,12 @@ export class ReservacionComponent implements OnInit {
   @ViewChild('fechaInput')
   fechaInput!: CalendarioComponent;
   rangeDates: Date[];
-  
+
+  getnombre: string = '';
+  getapellido: string = '';
+  gettelefono: string = '';
+  getcorreo: string = '';
+
   usdToEur: number | undefined;
   usdToGbp: number | undefined;
 
@@ -34,7 +40,8 @@ export class ReservacionComponent implements OnInit {
   constructor(
     private exchangeRateAPIService: ExchangeRateAPIService,
     private pagina: PaginaService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private http: HttpClient
   ) {
     this.rangeDates = [];
     pagina.setValor('servicios');
@@ -47,19 +54,36 @@ export class ReservacionComponent implements OnInit {
     });
     const habParam = this.route.snapshot.paramMap.get('hab');
     this.hab = habParam !== null ? habParam : '';
+
+
+    //Hacer mejor un servicio xd
+    this.pagina.id$.subscribe(userId => {
+      this.http.get<any>(`https://fire-base-con.vercel.app/getOneUser/${userId}`).subscribe(
+        response => {
+          console.log("Obtenido")
+          console.log(response);
+          this.getnombre = response.nombre;
+          console.log(response.nombre);
+          console.log(this.getnombre);
+          this.getapellido = response.apellido;
+          this.gettelefono = response.telefono;
+          this.getcorreo = response.correo;
+        },
+        error => {
+          console.error('Error al obtener los datos del usuario:', error);
+        }
+      );
+    });
   }
 
-  nombre: string = '';
-  apellido: string = '';
-  telefono: string = '';
-  correo: string = '';
+
   habitacion: string = '';
   fecha: string = '';
 
   guardarReservacion(event: Event) {
     event.preventDefault();
 
-    if (!this.nombre || !this.apellido || !this.telefono || !this.correo || !this.hab) {
+    if (!this.hab) {
       Swal.fire({
         icon: 'error',
         title: 'Datos incompletos',
@@ -68,52 +92,42 @@ export class ReservacionComponent implements OnInit {
       return;
     }
     const fechaSeleccionada = this.fechaInput.rangeDates;
+    console.log('Nombre' + this.getnombre);
 
     const reservacion = {
-      nombre: this.nombre,
-      apellido: this.apellido,
-      telefono: this.telefono,
-      correo: this.correo,
+      nombre: this.getnombre,
+      apellido: this.getapellido,
+      telefono: this.gettelefono,
+      correo: this.getcorreo,
       habitacion: this.hab,
       fecha: fechaSeleccionada
     };
-
-    // Obtener el array actual de reservaciones del Local Storage
-    const reservacionesString = localStorage.getItem('reservaciones');
-    const reservaciones = reservacionesString ? JSON.parse(reservacionesString) : [];
-
-    // Agregar la nueva reservación al array
-    reservaciones.push(reservacion);
-
-    // Guardar el array actualizado en el Local Storage
-    localStorage.setItem('reservaciones', JSON.stringify(reservaciones));
-
+    console.log(reservacion);
     // Limpiar el formulario
-    this.nombre = '';
-    this.apellido = '';
-    this.telefono = '';
-    this.correo = '';
     this.habitacion = '';
-
-    // Mostrar mensaje de éxito o realizar otras acciones necesarias
-    console.log('Reservación guardada exitosamente:', reservacion);
-    Swal.fire({
-      icon: 'success',
-      title: 'Éxito',
-      text: 'Reservación guardada exitosamente',
-    })
+    this.fecha = '';
+    /*
+        const url = 'https://fire-base-con.vercel.app/postReservation';
+    
+        this.http.post(url, reservacion).subscribe(
+          response => {
+            console.log('Reservación enviada exitosamente:', response);
+            Swal.fire({
+              icon: 'success',
+              title: 'Éxito',
+              text: 'Reservación enviada exitosamente'
+            });
+          },
+          error => {
+            console.error('Error al enviar la reservación:', error);
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'Ocurrió un error al enviar la reservación'
+            });
+          }
+        );*/
   }
-
-  disableSelect = new FormControl(false);
-
-
-  onSubmit(formulario: NgForm) {
-    console.log(formulario.value);
-    console.log(formulario.value);
-    // Resto del código para procesar los datos del formulario
-  }
-
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
   matcher = new MyErrorStateMatcher();
 }
