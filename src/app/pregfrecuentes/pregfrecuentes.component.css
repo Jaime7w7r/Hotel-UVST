@@ -1,8 +1,8 @@
 
-.faq-container {
+faq-container {
     width: 70%;
     margin: 0 auto;
-    background: linear-gradient(135deg, #ffd000 0%, #ff5517 100%);
+    background: linear-gradient(110deg, #2997ff 40%, #f50000 55%);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(255, 15, 15, 0.448);
@@ -49,7 +49,7 @@
   }
   
   h1 {
-    background-image: linear-gradient(to right, #ff0000, #ff8000, #ffff00, #80ff00, #00ff80, #00ffff, #0080ff, #0000ff, #8000ff, #ff00ff, #ff0080);
+    background-image: linear-gradient(to right, #ff0000, #00aaff, #ff0000, #80ff00, #00ff80, #00ffff, #0080ff, #0000ff, #8000ff, #ff00ff, #ff0080);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
