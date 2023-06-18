@@ -1,1 +1,8 @@
-<p>pregfrecuentes works!</p>
+
+<h1>Preguntas frecuentes</h1>
+<div class="faq-container">
+  <div class="faq-item" *ngFor="let pregunta of preguntas" (click)="toggleRespuesta(pregunta)">
+    <div class="question">{{ pregunta.pregunta }}</div>
+    <div class="respuesta" [ngClass]="{'show': pregunta.mostrarRespuesta}">{{ pregunta.respuesta }}</div>
+  </div>
+</div>
