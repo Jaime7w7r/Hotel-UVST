@@ -12,7 +12,7 @@ import { ContactanosComponent } from './contactanos/contactanos.component';
 import { PregfrecuentesComponent } from './pregfrecuentes/pregfrecuentes.component';
 import { ReservacionesComponent } from './reservaciones/reservaciones.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
-
+import { DeleteUserComponent } from './DeleteUser/DeleteUser.component';
 const routes: Routes = [
   { path: 'inicio', component: InicioComponent },
   { path: 'login', component: LoginComponent },
@@ -26,6 +26,7 @@ const routes: Routes = [
   { path: 'preguntas', component: PregfrecuentesComponent},
   { path: 'reservaciones', component: ReservacionesComponent},
   { path: 'usuarios', component: UsuariosComponent},
+  {path:'DeleteUser',component:DeleteUserComponent},
   { path: '**', pathMatch: 'full', redirectTo: 'inicio' }
 ];
 

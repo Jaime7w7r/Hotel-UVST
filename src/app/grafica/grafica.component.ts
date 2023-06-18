@@ -187,7 +187,7 @@ export class GraficaComponent implements OnInit {
     };
   }
   ngOnInit() {
-    this.apiService.obtenerDatos().subscribe(
+    this.apiService.obtenerDatos("getResev").subscribe(
       (response)=>{
         this.datos=response;
         this.procesarDatos();

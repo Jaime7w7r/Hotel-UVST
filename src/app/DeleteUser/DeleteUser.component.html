@@ -1,0 +1,22 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Email</th>
+      <th>Telefono</th>
+      <!-- Agrega aquí las columnas adicionales que necesites -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dato of datos" (click)="DelUser(dato.id)">
+      <td>{{ dato.id }}</td>
+      <td>{{ dato.nombre }}</td>
+      <td>{{ dato.apellido }}</td>
+      <td>{{ dato.correo }}</td>
+      <td>{{ dato.telefono }}</td>
+      <!-- Agrega aquí las columnas adicionales que necesites -->
+    </tr>
+  </tbody>
+</table>

@@ -26,10 +26,11 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { PregfrecuentesComponent } from './pregfrecuentes/pregfrecuentes.component';
 import { ContactanosComponent } from './contactanos/contactanos.component';
 import { SignupComponent } from './signup/signup.component';
+import { DeleteUserComponent } from './DeleteUser/DeleteUser.component';
 
 
 @NgModule({
-  declarations: [
+  declarations: [		
     AppComponent,
     NavbarComponent,
     ReservacionComponent,
@@ -48,8 +49,9 @@ import { SignupComponent } from './signup/signup.component';
     UsuariosComponent,
     PregfrecuentesComponent,
     ContactanosComponent,
-    SignupComponent
-  ],
+    SignupComponent,
+      DeleteUserComponent
+   ],
   imports: [
     HttpClientModule,
     BrowserModule,
