@@ -25,6 +25,7 @@ import { ReservacionesComponent } from './reservaciones/reservaciones.component'
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { PregfrecuentesComponent } from './pregfrecuentes/pregfrecuentes.component';
 import { ContactanosComponent } from './contactanos/contactanos.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { ContactanosComponent } from './contactanos/contactanos.component';
     ReservacionesComponent,
     UsuariosComponent,
     PregfrecuentesComponent,
-    ContactanosComponent
+    ContactanosComponent,
+    SignupComponent
   ],
   imports: [
     HttpClientModule,

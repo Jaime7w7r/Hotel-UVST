@@ -11,6 +11,7 @@ import {
   ApexFill
 } from "ng-apexcharts";
 import { ApiService } from '../api.service';
+import { PaginaService } from '../pagina.service';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -46,7 +47,9 @@ export class GraficaComponent implements OnInit {
     'Diciembre'
   ];
   ResevMes:any[] | undefined;
-  constructor(private apiService:ApiService) {}
+  constructor(private apiService: ApiService, private pagina: PaginaService) {
+    pagina.setValor('graficos');
+  }
   procesarDatos(){
     this.fechas=[];
     this.ResevMes=[];

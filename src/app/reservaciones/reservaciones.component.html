@@ -1,1 +1,25 @@
-<p>reservaciones works!</p>
+<br /><br />
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Teléfono</th>
+        <th>Fecha Entrada - Salida</th>
+        <th>Tipo de Habitación</th>
+        <th>Correo Electrónico</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let componente of reservaciones">
+        <td>{{ componente.nombre }}</td>
+        <td>{{ componente.apellido }}</td>
+        <td>{{ componente.telefono }}</td>
+        <td>{{ componente.fecha[0] }}</td>
+        <td>{{ componente.habitacion }}</td>
+        <td>{{ componente.correo }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,15 @@
+.container {
+    background-color: rgba(10, 10, 10, 0.8);
+    border-radius: 80px;
+  }
+  
+  th {
+    text-align: center;
+    color: #F257C9;
+  }
+  
+  td {
+    text-align: center;
+    color: white;
+  }
+  

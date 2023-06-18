@@ -1,1 +1,21 @@
-<p>usuarios works!</p>
+<br /><br />
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Telefono</th>
+        <th>Correo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let componente of componentes">
+        <td>{{ componente.nombre }}</td>
+        <td>{{ componente.apellido }}</td>
+        <td>{{ componente.telefono }}</td>
+        <td>{{ componente.correo }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

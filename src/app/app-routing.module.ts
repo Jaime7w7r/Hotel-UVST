@@ -10,6 +10,8 @@ import { LoginComponent } from './login/login.component';
 import { GraficaComponent } from './grafica/grafica.component';
 import { ContactanosComponent } from './contactanos/contactanos.component';
 import { PregfrecuentesComponent } from './pregfrecuentes/pregfrecuentes.component';
+import { ReservacionesComponent } from './reservaciones/reservaciones.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 const routes: Routes = [
   { path: 'inicio', component: InicioComponent },
@@ -22,6 +24,8 @@ const routes: Routes = [
   { path: 'graficos', component: GraficaComponent},
   { path: 'contactanos', component: ContactanosComponent},
   { path: 'preguntas', component: PregfrecuentesComponent},
+  { path: 'reservaciones', component: ReservacionesComponent},
+  { path: 'usuarios', component: UsuariosComponent},
   { path: '**', pathMatch: 'full', redirectTo: 'inicio' }
 ];
 

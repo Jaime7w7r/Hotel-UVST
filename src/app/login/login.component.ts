@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { PaginaService } from '../pagina.service';
 import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 interface Usuario {
   correo: string;
   contraseña: string;
-  nombre: string; // Agrega el campo nombre en la interfaz Usuario
+  nombre: string;
 }
 
 @Component({
@@ -17,13 +18,14 @@ interface Usuario {
 export class LoginComponent {
   email!: string;
   password!: string;
+  mostrarLogin: boolean = true;
 
   constructor(private pagina: PaginaService, private http: HttpClient, private router: Router) {
     pagina.setValor('login');
   }
 
   async verificarUsuario(): Promise<void> {
-    const response = await this.http.get<Usuario[]>('https://fire-base-con.vercel.app/getUser/').toPromise();
+    const response = await this.http.get<Usuario[]>('https://fire-base-con.vercel.app/getUser').toPromise();
     const usuarios = response || [];
 
     const usuarioEncontrado = usuarios.find(
@@ -40,11 +42,24 @@ export class LoginComponent {
         this.pagina.setTipoUsuario('user');
       }
 
-      this.pagina.setNombre(usuarioEncontrado.nombre); // Guardar el nombre del usuario
+      this.pagina.setNombre(usuarioEncontrado.nombre);
 
-      this.router.navigate(['/inicio']); // Redirigir a la página de inicio
+      this.router.navigate(['/inicio']);
     } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Usuario o contraseña incorrecta'
+      });
       console.log('Usuario inválido');
     }
+  }
+
+  mostrarRegistro(): void {
+    this.mostrarLogin = false;
+  }
+
+  mostrarLoginExitoso(): void {
+    this.mostrarLogin = true;
   }
 }
