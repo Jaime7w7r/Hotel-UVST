@@ -114,3 +114,8 @@ img {
     width: 60%;
     height: 60%;
 }
+
+.high-contrast {
+    background-color: black;
+    color: white;
+  }
