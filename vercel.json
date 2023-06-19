@@ -1,0 +1,14 @@
+{
+    "headers": [
+      {
+        "source": "/getUser",
+        "headers": [
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }
+        ]
+      }
+    ]
+  }
+  
