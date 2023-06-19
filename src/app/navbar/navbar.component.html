@@ -6,7 +6,6 @@
       <li *ngIf="tipoUsuario === 'admin'">Hola Administrador</li>
       <li *ngIf="tipoUsuario === 'user'">Hola {{ nombre }}</li>
     </ul>
-    <!--<app-accesibilidad></app-accesibilidad>-->
   </div>
 
   <div class="navbar-container">
@@ -22,7 +21,7 @@
         >
       </li>
       <li
-        *ngIf="tipoUsuario !== 'admin'"
+        *ngIf="tipoUsuario !== 'admin' && tipoUsuario !== 'user'"
         class="nav-item"
         routerLinkActive="active"
       >
@@ -101,7 +100,7 @@
         routerLinkActive="active"
       >
         <a
-          [ngClass]="{ seleccionado: valor === 'preguntas ' }"
+          [ngClass]="{ seleccionado: valor === 'preguntas' }"
           class="nav-link"
           [routerLink]="['preguntas']"
           >Preguntas Frecuentes</a
@@ -116,7 +115,7 @@
           [ngClass]="{ seleccionado: valor === 'contactanos' }"
           class="nav-link"
           [routerLink]="['contactanos']"
-          >Contactos</a
+          >Contactanos</a
         >
       </li>
       <li

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PaginaService } from '../pagina.service';
 
 interface Pregunta {
   pregunta: string;
@@ -56,14 +57,18 @@ export class PregfrecuentesComponent {
     {
       pregunta: '9.¿Se puede solicitar servicio de habitaciones?',
       respuesta: 'Sí, ofrecemos servicio de habitaciones las 24 horas. Puedes pedir comida o bebidas directamente a tu habitación.',
-      mostrarRespuesta: false 
+      mostrarRespuesta: false
     },
     {
       pregunta: '10.¿Tienen estacionamiento disponible?',
       respuesta: 'Sí, tenemos un estacionamiento gratuito para nuestros huéspedes. Solo necesitas registrarte en la recepción para obtener un pase de estacionamiento.',
-      mostrarRespuesta: false 
+      mostrarRespuesta: false
     }
   ];
+
+  constructor(private pagina: PaginaService) {
+    pagina.setValor('preguntas');
+  }
 
   toggleRespuesta(pregunta: Pregunta) {
     pregunta.mostrarRespuesta = !pregunta.mostrarRespuesta;

@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { PaginaService } from '../pagina.service';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
-import { NgxSpinnerService } from 'ngx-spinner';
 
 interface Usuario {
   id: string;
@@ -24,47 +23,60 @@ export class LoginComponent {
   password!: string;
   mostrarLogin: boolean = true;
   registroExitoso!: boolean;
+  cargando: boolean = false;
 
-  constructor(private pagina: PaginaService, private http: HttpClient, private router: Router, private spinner: NgxSpinnerService) {
+  correoValido: boolean = false;
+  contraseñaValida: boolean = false;
+
+  constructor(private pagina: PaginaService, private http: HttpClient, private router: Router) {
     pagina.setValor('login');
   }
 
   async verificarUsuario(): Promise<void> {
-    this.spinner.show('spinner');
+    this.cargando = true;
     const response = await this.http.get<Usuario[]>('https://fire-base-con.vercel.app/getUser').toPromise();
     const usuarios = response || [];
 
-    const usuarioEncontrado = usuarios.find(
-      (usuario) => usuario.correo === this.email && usuario.contraseña === this.password
-    );
-    this.spinner.hide('spinner');
+    if (this.password.length >= 6) {
+      const usuarioEncontrado = usuarios.find(
+        (usuario) => usuario.correo === this.email && usuario.contraseña === this.password
+      );
 
-    if (usuarioEncontrado) {
-      console.log('Usuario válido');
+      if (usuarioEncontrado) {
+        console.log('Usuario válido');
 
-      if (usuarioEncontrado.correo === 'admin@gmail.com') {
-        console.log('administrador');
-        this.pagina.setTipoUsuario('admin');
+        if (usuarioEncontrado.correo === 'admin@gmail.com') {
+          console.log('administrador');
+          this.pagina.setTipoUsuario('admin');
+        } else {
+          this.pagina.setTipoUsuario('user');
+        }
+
+        this.pagina.setNombre(usuarioEncontrado.nombre);
+        this.pagina.setId(usuarioEncontrado.id);
+        this.pagina.setApellido(usuarioEncontrado.apellido);
+        this.pagina.setTelefono(usuarioEncontrado.telefono);
+        this.pagina.setCorreo(usuarioEncontrado.correo);
+
+        this.router.navigate(['/inicio']);
       } else {
-        this.pagina.setTipoUsuario('user');
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Usuario o contraseña incorrecta'
+        });
+        console.log('Usuario inválido');
       }
-
-      this.pagina.setNombre(usuarioEncontrado.nombre);
-      this.pagina.setId(usuarioEncontrado.id);
-      this.pagina.setApellido(usuarioEncontrado.apellido);
-      this.pagina.setTelefono(usuarioEncontrado.telefono);
-      this.pagina.setCorreo(usuarioEncontrado.correo);
-
-      this.router.navigate(['/inicio']);
-    }
-    else {
+    } else {
       Swal.fire({
         icon: 'error',
         title: 'Error',
-        text: 'Usuario o contraseña incorrecta'
+        text: 'La contraseña debe tener al menos 6 caracteres'
       });
-      console.log('Usuario inválido');
+      console.log('Contraseña inválida');
     }
+
+    this.cargando = false;
   }
 
   mostrarRegistro(): void {
@@ -74,5 +86,22 @@ export class LoginComponent {
   mostrarLoginExitoso(): void {
     this.registroExitoso = true;
     this.mostrarLogin = true;
+  }
+
+  validarCorreo(): void {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    this.correoValido = regex.test(this.email);
+
+    if (!this.correoValido && this.email) {
+      const errorMessage = document.querySelector('.error-message');
+      errorMessage?.classList.add('show');
+    } else {
+      const errorMessage = document.querySelector('.error-message');
+      errorMessage?.classList.remove('show');
+    }
+  }
+
+  validarContraseña(): void {
+    this.contraseñaValida = this.password.length >= 6;
   }
 }

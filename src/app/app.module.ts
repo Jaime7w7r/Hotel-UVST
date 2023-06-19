@@ -30,7 +30,6 @@ import { DeleteUserComponent } from './DeleteUser/DeleteUser.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
-import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 @NgModule({
@@ -63,7 +62,6 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     MaterialModule,
     NgApexchartsModule,
     BrowserAnimationsModule,
-    NgxSpinnerModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable
