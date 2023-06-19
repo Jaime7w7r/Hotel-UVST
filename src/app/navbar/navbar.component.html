@@ -13,10 +13,7 @@
     <p>Hotel Un Verano Sin Ti</p>
     <div>Un Verano Sin Ti: Tu escapada inolvidable al paraíso</div>
     <ul class="nav-items">
-      <li
-        class="nav-item"
-        routerLinkActive="active"
-      >
+      <li class="nav-item" routerLinkActive="active">
         <a
           [ngClass]="{ seleccionado: valor === 'inicio' }"
           class="nav-link"
@@ -25,10 +22,9 @@
         >
       </li>
       <li
-      *ngIf="!this.userService.isAuthenticated()"
+        *ngIf="tipoUsuario !== 'admin'"
         class="nav-item"
         routerLinkActive="active"
-
       >
         <a
           [ngClass]="{ seleccionado: valor === 'login' }"
@@ -50,6 +46,7 @@
         >
       </li>
       <li
+        *ngIf="tipoUsuario !== 'admin'"
         class="nav-item"
         routerLinkActive="active"
       >
@@ -60,7 +57,11 @@
           >Galeria</a
         >
       </li>
-      <li *ngIf="tipoUsuario !== 'admin'" class="nav-item" routerLinkActive="active">
+      <li
+        *ngIf="tipoUsuario !== 'admin'"
+        class="nav-item"
+        routerLinkActive="active"
+      >
         <a
           [ngClass]="{ seleccionado: valor === 'nosotros' }"
           class="nav-link"

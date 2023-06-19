@@ -1,46 +1,75 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../user.service';
+import { PaginaService } from '../pagina.service';
+import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
+
+interface Usuario {
+  id: string;
+  correo: string;
+  contraseña: string;
+  nombre: string;
+  telefono: string;
+  apellido: string;
+}
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
-  providers:[UserService]
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  registrationForm!: FormGroup;
+  email!: string;
+  password!: string;
+  mostrarLogin: boolean = true;
+  registroExitoso!: boolean;
 
-  constructor(private userService: UserService, private router: Router) { }
-
-  ngOnInit() {
-    this.registrationForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(6)])
-    });
+  constructor(private pagina: PaginaService, private http: HttpClient, private router: Router) {
+    pagina.setValor('login');
   }
 
-  onSubmit() {
-    if (this.registrationForm.valid) {
-      console.log(this.registrationForm.value);
-      this.userService.logIn(this.registrationForm.value)
-        .then(response => {
-          console.log(response.user);
-          this.router.navigate(['/inicio'])
-          // Aquí puedes redirigir al usuario a la página de inicio o a otra página deseada
-        })
-        .catch(error => console.log(error));
+  async verificarUsuario(): Promise<void> {
+    const response = await this.http.get<Usuario[]>('https://fire-base-con.vercel.app/getUser').toPromise();
+    const usuarios = response || [];
+
+    const usuarioEncontrado = usuarios.find(
+      (usuario) => usuario.correo === this.email && usuario.contraseña === this.password
+    );
+
+    if (usuarioEncontrado) {
+      console.log('Usuario válido');
+
+      if (usuarioEncontrado.correo === 'admin@gmail.com') {
+        console.log('administrador');
+        this.pagina.setTipoUsuario('admin');
+      } else {
+        this.pagina.setTipoUsuario('user');
+      }
+
+      this.pagina.setNombre(usuarioEncontrado.nombre);
+      this.pagina.setId(usuarioEncontrado.id);
+      this.pagina.setApellido(usuarioEncontrado.apellido);
+      this.pagina.setTelefono(usuarioEncontrado.telefono);
+      this.pagina.setCorreo(usuarioEncontrado.correo);
+
+      this.router.navigate(['/inicio']);
+    }
+    else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Usuario o contraseña incorrecta'
+      });
+      console.log('Usuario inválido');
     }
   }
 
-  onClick() {
-    this.userService.loginWithGoogle()
-      .then(response => {
-        console.log(response);
-        this.router.navigate(['/inicio'])
-        // Aquí puedes redirigir al usuario a la página de inicio o a otra página deseada
-      })
-      .catch(err => console.log(err));
+  mostrarRegistro(): void {
+    this.mostrarLogin = false;
+  }
+
+  mostrarLoginExitoso(): void {
+    this.registroExitoso = true;
+    this.mostrarLogin = true;
   }
 }
