@@ -27,6 +27,9 @@ import { PregfrecuentesComponent } from './pregfrecuentes/pregfrecuentes.compone
 import { ContactanosComponent } from './contactanos/contactanos.component';
 import { SignupComponent } from './signup/signup.component';
 import { DeleteUserComponent } from './DeleteUser/DeleteUser.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
 
 
 @NgModule({
@@ -64,7 +67,9 @@ import { DeleteUserComponent } from './DeleteUser/DeleteUser.component';
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    })
+    }),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth())
   ],
   providers: [],
   bootstrap: [AppComponent]

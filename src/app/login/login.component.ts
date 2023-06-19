@@ -1,67 +1,44 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { PaginaService } from '../pagina.service';
-import { HttpClient } from '@angular/common/http';
+import { UserService } from '../user.service';
 import Swal from 'sweetalert2';
-
-interface Usuario {
-  id: string;
-  correo: string;
-  contraseña: string;
-  nombre: string;
-}
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers:[UserService]
 })
 export class LoginComponent {
-  email!: string;
-  password!: string;
-  mostrarLogin: boolean = true;
+  registrationForm!: FormGroup;
 
-  constructor(private pagina: PaginaService, private http: HttpClient, private router: Router) {
-    pagina.setValor('login');
+  constructor(private userService: UserService, private router: Router) { }
+
+  ngOnInit() {
+    this.registrationForm = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)])
+    });
   }
 
-  async verificarUsuario(): Promise<void> {
-    const response = await this.http.get<Usuario[]>('https://fire-base-con.vercel.app/getUser').toPromise();
-    const usuarios = response || [];
-
-    const usuarioEncontrado = usuarios.find(
-      (usuario) => usuario.correo === this.email && usuario.contraseña === this.password
-    );
-
-    if (usuarioEncontrado) {
-      console.log('Usuario válido');
-
-      if (usuarioEncontrado.correo === 'admin@gmail.com') {
-        console.log('administrador');
-        this.pagina.setTipoUsuario('admin');
-      } else {
-        this.pagina.setTipoUsuario('user');
-      }
-
-      this.pagina.setNombre(usuarioEncontrado.nombre);
-      this.pagina.setId(usuarioEncontrado.id);
-
-      this.router.navigate(['/inicio']);
-    } else {
-      Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'Usuario o contraseña incorrecta'
-      });
-      console.log('Usuario inválido');
+  onSubmit() {
+    if (this.registrationForm.valid) {
+      console.log(this.registrationForm.value);
+      this.userService.logIn(this.registrationForm.value)
+        .then(response => {
+          console.log(response.user);
+          // Aquí puedes redirigir al usuario a la página de inicio o a otra página deseada
+        })
+        .catch(error => console.log(error));
     }
   }
 
-  mostrarRegistro(): void {
-    this.mostrarLogin = false;
-  }
-
-  mostrarLoginExitoso(): void {
-    this.mostrarLogin = true;
+  onClick() {
+    this.userService.loginWithGoogle()
+      .then(response => {
+        console.log(response);
+        // Aquí puedes redirigir al usuario a la página de inicio o a otra página deseada
+      })
+      .catch(err => console.log(err));
   }
 }
