@@ -1,6 +1,0 @@
-{
-    "build": {
-      "maxLambdaSize": "3mb"
-    }
-  }
-  
