@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { PaginaService } from '../pagina.service';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 interface Usuario {
   id: string;
@@ -24,17 +25,19 @@ export class LoginComponent {
   mostrarLogin: boolean = true;
   registroExitoso!: boolean;
 
-  constructor(private pagina: PaginaService, private http: HttpClient, private router: Router) {
+  constructor(private pagina: PaginaService, private http: HttpClient, private router: Router, private spinner: NgxSpinnerService) {
     pagina.setValor('login');
   }
 
   async verificarUsuario(): Promise<void> {
+    this.spinner.show('spinner');
     const response = await this.http.get<Usuario[]>('https://fire-base-con.vercel.app/getUser').toPromise();
     const usuarios = response || [];
 
     const usuarioEncontrado = usuarios.find(
       (usuario) => usuario.correo === this.email && usuario.contraseña === this.password
     );
+    this.spinner.hide('spinner');
 
     if (usuarioEncontrado) {
       console.log('Usuario válido');
