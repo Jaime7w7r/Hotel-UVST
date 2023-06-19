@@ -27,6 +27,7 @@ export class LoginComponent {
       this.userService.logIn(this.registrationForm.value)
         .then(response => {
           console.log(response.user);
+          this.router.navigate(['/inicio'])
           // Aquí puedes redirigir al usuario a la página de inicio o a otra página deseada
         })
         .catch(error => console.log(error));
@@ -37,6 +38,7 @@ export class LoginComponent {
     this.userService.loginWithGoogle()
       .then(response => {
         console.log(response);
+        this.router.navigate(['/inicio'])
         // Aquí puedes redirigir al usuario a la página de inicio o a otra página deseada
       })
       .catch(err => console.log(err));

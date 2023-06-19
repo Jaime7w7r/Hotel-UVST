@@ -25,9 +25,10 @@
         >
       </li>
       <li
-        *ngIf="tipoUsuario !== 'user' && tipoUsuario !== 'admin'"
+      *ngIf="!this.userService.isAuthenticated()"
         class="nav-item"
         routerLinkActive="active"
+
       >
         <a
           [ngClass]="{ seleccionado: valor === 'login' }"
@@ -49,7 +50,6 @@
         >
       </li>
       <li
-        *ngIf="tipoUsuario !== 'admin'"
         class="nav-item"
         routerLinkActive="active"
       >
@@ -165,6 +165,9 @@
           type="text"
           placeholder="Buscar"
         />
+      </li>
+      <li *ngIf="this.userService.isAuthenticated()">
+        <button class="btn" (click)="LogOut()">LogOut</button>
       </li>
     </ul>
   </div>

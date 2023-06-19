@@ -1,18 +1,20 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { PaginaService } from '../pagina.service';
-
+import { UserService } from '../user.service';
+import { Auth } from '@angular/fire/auth';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
+  providers:[UserService]
 })
 export class NavbarComponent {
   public valor: string | undefined;
   public tipoUsuario: string | undefined;
   public nombre: string | undefined;
 
-  constructor(private router: Router, private pagina: PaginaService) {
+  constructor(private router: Router, private pagina: PaginaService,public userService: UserService, private auth:Auth) {
     this.pagina.valor$.subscribe(valor => {
       this.valor = valor;
     });
@@ -23,6 +25,16 @@ export class NavbarComponent {
       this.nombre = nombre;
     });
   }
+
+  LogOut(){
+    console.log('hola');
+    this.userService.logout()
+    .then(response=>{
+      console.log(response)
+    })
+    .catch(err=> console.log(err));
+  }
+
 
   ver(valor: string) {
     if (valor.trim() == 'fotos') {
