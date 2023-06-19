@@ -19,74 +19,43 @@
 <section id="data">
   <div></div>
   <div class="desc">
-    <h1>BIENVENIDO AL HOTEL UN VERANO SIN TI</h1>
-    <p>
-      En "Un Verano Sin Ti", nos apasiona crear experiencias memorables para
-      nuestros huéspedes. Somos mucho más que un simple hotel, somos un destino
-      en sí mismo donde los sueños se hacen realidad y los momentos inolvidables
-      se vuelven eternos.
-    </p>
-    <p>
-      En el corazón de nuestro establecimiento, encontrarás una hermosa piscina
-      que te invita a sumergirte en aguas cristalinas y refrescarte bajo el
-      cálido sol. Nuestro oasis acuático es el lugar perfecto para relajarte,
-      nadar y disfrutar de momentos de ocio junto a seres queridos.
-    </p>
-    <p>
-      Para aquellos que desean mantenerse en forma incluso durante las
-      vacaciones, nuestro moderno gimnasio está equipado con equipos de última
-      generación. Desde máquinas cardiovasculares hasta pesas, tendrás todo lo
-      necesario para seguir tu rutina de ejercicios y cuidar tu bienestar
-      físico.
-    </p>
-    <div *ngIf="vermas; else botonver">
-      <p>
-        Sabemos lo importante que es estar conectado en la era digital, por eso
-        ofrecemos acceso gratuito a internet de alta velocidad en todas nuestras
-        instalaciones. Ya sea para trabajar, compartir tus experiencias o
-        simplemente mantenerte al día con tus seres queridos, estarás siempre
-        conectado.
-      </p>
-      <p>
-        En "Un Verano Sin Ti", nos enorgullece brindar una amplia gama de
-        servicios adicionales para hacer de tu estancia una experiencia completa
-        y satisfactoria. Nuestro equipo amable y dedicado está listo para
-        ayudarte con cualquier solicitud, desde servicios de habitación
-        impecables hasta consejos locales para explorar la belleza de nuestro
-        entorno.
-      </p>
-      <p>
-        En cuanto a la gastronomía, te invitamos a deleitar tu paladar en
-        nuestros restaurantes temáticos, donde chefs talentosos crean platos
-        exquisitos con ingredientes frescos y locales. Cada bocado es una
-        explosión de sabores y una invitación a explorar la diversidad
-        culinaria.
-      </p>
-      <p>
-        En "Un Verano Sin Ti", nuestra misión es superar tus expectativas y
-        brindarte una experiencia hotelera inolvidable. Nos esforzamos por crear
-        un ambiente acogedor y sofisticado donde cada detalle está
-        cuidadosamente diseñado para ofrecerte el máximo confort y disfrute.
-      </p>
-      <p>
-        Bienvenido a "Un Verano Sin Ti", donde la elegancia se fusiona con la
-        hospitalidad y los sueños se convierten en recuerdos duraderos. Estamos
-        aquí para hacer que tus vacaciones sean verdaderamente especiales y
-        transformar tu estancia en una experiencia que desearás revivir una y
-        otra vez.
-      </p>
-      <button (click)="nover()" class="btn btn-outline-warning">
-        Ver menos
+    <div class="top-container">
+      <button class="btn btn-dark" (click)="toggleButtons()">
+        <i class="fa-solid fa-universal-access"></i> Accesibilidad
       </button>
+      
+      <div class="button-container" *ngIf="showButtons">
+        <button class="btn btn-dark button-animation" (click)="toggleHighContrast()">
+          <i class="fas fa-adjust"></i> Alto Contraste
+        </button>
+    
+        <button class="btn btn-dark button-animation" (click)="increaseTextSize()">
+          <i class="fas fa-plus"></i> Aumentar Texto
+        </button>
+    
+        <button class="btn btn-dark button-animation" (click)="decreaseTextSize()">
+          <i class="fas fa-minus"></i> Disminuir Texto
+        </button>
+    
+        <select class="form-select" (change)="changeLanguage($event)">
+          <option value="es">Español</option>
+          <option value="en">English</option>
+        </select>
+    
+        <button class="btn btn-dark button-animation" (click)="toggleScreenReader()" *ngIf="speechSynthesisSupported">
+          <i class="fa-solid fa-ear-listen fa-beat-fade"></i>
+          {{ screenReaderEnabled ? 'Detener Lector de Pantalla' : 'Iniciar Lector de Pantalla' }}
+        </button>
+      </div>
+    
+      <div class="container text-center">
+        <p [ngClass]="{'high-contrast': isHighContrastMode}" [ngStyle]="{'font-size': fontSize + '%'}">{{ text }}</p>
+      </div>
     </div>
 
     <ng-template #botonver>
       <p id="gradiente">
-        Sabemos lo importante que es estar conectado en la era digital, por eso
-        ofrecemos acceso gratuito a internet de alta velocidad en todas nuestras
-        instalaciones. Ya sea para trabajar, compartir tus experiencias o
-        simplemente mantenerte al día con tus seres queridos, estarás siempre
-        conectado.
+        
       </p>
       <button (click)="ver()" class="btn btn-outline-warning">Ver más</button>
     </ng-template>
