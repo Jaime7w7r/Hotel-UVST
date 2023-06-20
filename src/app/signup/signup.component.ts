@@ -19,17 +19,25 @@ export class SignupComponent {
   nombre!: string;
   apellido!: string;
   contrasena!: string;
+  confirmarContrasena!: string;
   telefono!: string;
   correo!: string;
+  confirmarCorreo!: string;
 
   @Output() registroExitoso = new EventEmitter<void>();
 
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   guardarUsuario(): void {
     // Validar los campos antes de enviar el formulario
-    if (!this.nombre || !this.apellido || !this.contrasena || !this.telefono || !this.correo) {
+    if (
+      !this.nombre ||
+      !this.apellido ||
+      !this.contrasena ||
+      !this.confirmarContrasena ||
+      !this.telefono ||
+      !this.correo
+    ) {
       Swal.fire({
         icon: 'error',
         title: 'Error',
@@ -37,6 +45,16 @@ export class SignupComponent {
       });
       return;
     }
+
+    if (this.contrasena !== this.confirmarContrasena) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Las contraseñas no coinciden'
+      });
+      return;
+    }
+
 
     const usuario: Usuario = {
       nombre: this.nombre,
