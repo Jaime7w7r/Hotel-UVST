@@ -1,1 +1,37 @@
 
+
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #2cb7de;
+    color: #000000;
+    border: red;
+    cursor: pointer;
+  }
+  
+  .qr-code {
+    display: block;
+    margin: 20px auto;
+    max-width: 200px;
+    border: 2px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .qr-code-button:hover {
+    background-color: #0b0909;
+  }
+  

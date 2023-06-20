@@ -1,1 +1,9 @@
 
+
+<div class="container">
+    <h1>Generador de Código QR</h1>
+  
+    <button (click)="generateQRCode()">Generar Código QR</button>
+  
+    <img *ngIf="qrCodeImageUrl" class="qr-code" [src]="qrCodeImageUrl" alt="Código QR">
+  </div>
