@@ -56,6 +56,15 @@ export class NavbarComponent {
     if (valor.trim() == 'opiniones') {
       this.router.navigate(['/nosotros']);
     }
+    if (valor.trim() == 'graficas') {
+      this.router.navigate(['/graficos']);
+    }
+    if (valor.trim() == 'usuarios') {
+      this.router.navigate(['/usuarios']);
+    }
+    if (valor.trim() == 'reservaciones') {
+      this.router.navigate(['/reservaciones']);
+    }
   }
 
   onClick(){
