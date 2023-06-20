@@ -3,8 +3,8 @@
     <span class="logo-spacer"></span>
     <img src="assets/logo.png" alt="Logo de la empresa" />
     <ul>
-      <li *ngIf="tipoUsuario === 'admin'">Hola Administrador</li>
-      <li *ngIf="tipoUsuario === 'user'">Hola {{ nombre }}</li>
+      <li *ngIf="tipoUsuario === 'admin'">Hola Administrador <button (click)="onClick()">Salir</button></li>
+      <li *ngIf="tipoUsuario === 'user'">Hola {{ nombre }} <button (click)="onClick()">Salir</button></li>
     </ul>
   </div>
 
@@ -166,9 +166,9 @@
           placeholder="Buscar"
         />
       </li>
-      <li *ngIf="this.userService.isAuthenticated()">
+      <!--<li *ngIf="this.userService.isAuthenticated()">
         <button class="btn" (click)="LogOut()">LogOut</button>
-      </li>
+      </li>-->
     </ul>
   </div>
 </header>

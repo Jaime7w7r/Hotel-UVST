@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PaginaService } from '../pagina.service';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contacto',
@@ -7,18 +9,40 @@ import { PaginaService } from '../pagina.service';
   styleUrls: ['./contacto.component.css']
 })
 export class ContactoComponent implements OnInit {
-  componentes: any[] | undefined; // Arreglo para almacenar los datos del LocalStorage
+  reservaciones: any[] = [];
+  public correoBuscado!: string;
 
-  constructor(private pagina: PaginaService) {
-    pagina.setValor('contacto');
+  constructor(private http: HttpClient, private pagina: PaginaService, private router: Router) {
+    pagina.setValor('reservaciones');
   }
 
-  ngOnInit() {
-    // Obtener los datos del LocalStorage
-    const data = localStorage.getItem('reservaciones');
-    this.componentes = data ? JSON.parse(data) : [];
-    if (this.componentes && this.componentes.length > 0) {
-      console.log(this.componentes[0]);
-    }
+  ngOnInit(): void {
+    this.obtenerReservaciones();
+    this.correoBuscado = this.pagina.getCorreo();
+  }
+
+  obtenerReservaciones(): void {
+    this.http.get<any[]>('https://fire-base-con.vercel.app/getResev')
+      .subscribe(
+        (reservaciones) => {
+          this.reservaciones = reservaciones.filter(reservacion => reservacion.correo === this.correoBuscado);
+        },
+        (error) => {
+          console.log('Error al obtener las reservaciones:', error);
+        }
+      );
+  }
+  onClick(id: string) {
+    const url = `https://fire-base-con.vercel.app/deleteResev/${id}`;
+
+    this.http.delete(url).subscribe(
+      () => {
+        console.log('Reservación eliminada correctamente');
+        this.router.navigate(['/inicio']);
+      },
+      (error) => {
+        console.log('Error al eliminar la reservación:', error);
+      }
+    );
   }
 }

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { PaginaService } from '../pagina.service';
 import { UserService } from '../user.service';
 import { Auth } from '@angular/fire/auth';
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -55,5 +56,9 @@ export class NavbarComponent {
     if (valor.trim() == 'opiniones') {
       this.router.navigate(['/nosotros']);
     }
+  }
+
+  onClick(){
+    this.pagina.setTipoUsuario('');
   }
 }

@@ -1,14 +1,28 @@
-.container{
+.container {
   background-color: rgb(10, 10, 10, 0.8);
   border-radius: 80px;
 }
 
-th{
+th {
   text-align: center;
   color: #F257C9;
 }
 
-td{
+td {
   text-align: center;
   color: white;
+}
+
+button {
+  background-color: #F257C9;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #D636A5;
 }

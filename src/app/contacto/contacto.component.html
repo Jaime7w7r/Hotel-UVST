@@ -5,18 +5,22 @@
       <tr>
         <th>Nombre</th>
         <th>Apellido</th>
-        <th>Telefono</th>
-        <th>Fecha de Entrada</th>
-        <th>Tipo de Habitacion</th>
+        <th>Teléfono</th>
+        <th>Fecha Entrada - Salida</th>
+        <th>Tipo de Habitación</th>
+        <th>Correo Electrónico</th>
+        <th>Borrar</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let componente of componentes">
+      <tr *ngFor="let componente of reservaciones">
         <td>{{ componente.nombre }}</td>
         <td>{{ componente.apellido }}</td>
         <td>{{ componente.telefono }}</td>
-        <td>{{ componente.fecha[0] }}</td>
+        <td>{{ componente.fecha }}</td>
         <td>{{ componente.habitacion }}</td>
+        <td>{{ componente.correo }}</td>
+        <td><button (click)="onClick(componente.id)">Borrar</button></td>
       </tr>
     </tbody>
   </table>
