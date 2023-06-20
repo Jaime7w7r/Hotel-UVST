@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PaginaService } from '../pagina.service';
+import { UserService } from '../user.service';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
 
@@ -16,7 +18,9 @@ interface Usuario {
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers:[UserService],
+  
 })
 export class LoginComponent {
   email!: string;
@@ -28,7 +32,7 @@ export class LoginComponent {
   correoValido: boolean = false;
   contraseñaValida: boolean = false;
 
-  constructor(private pagina: PaginaService, private http: HttpClient, private router: Router) {
+  constructor(private pagina: PaginaService, private http: HttpClient, private router: Router, private userService: UserService) {
     pagina.setValor('login');
   }
 
@@ -103,5 +107,15 @@ export class LoginComponent {
 
   validarContraseña(): void {
     this.contraseñaValida = this.password.length >= 6;
+  }
+
+  onClick() {
+    this.userService.loginWithGoogle()
+      .then(response => {
+        console.log(response);
+        this.router.navigate(['/inicio'])
+        // Aquí puedes redirigir al usuario a la página de inicio o a otra página deseada
+      })
+      .catch(err => console.log(err));
   }
 }
